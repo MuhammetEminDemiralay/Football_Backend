@@ -13,8 +13,8 @@ namespace Entities.Concrete
         public int LeagueId { get; set; }
         public int Goals { get; set; }
         public int Assist { get; set; }
-        public int MinutesPerGol { get; set; }
-        public int MinutePlayed { get; set; }
+        public int MinutesPerGoal { get; set; }
+        public int MinutesPlayed { get; set; }
         public int YellowCard { get; set; }
         public int RedCard { get; set; }
     }

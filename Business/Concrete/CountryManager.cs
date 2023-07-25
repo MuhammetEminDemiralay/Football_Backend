@@ -14,11 +14,6 @@ namespace Business.Concrete
     {
         ICountryDal _countryDal;
 
-        public CountryManager(ICountryDal countryDal)
-        {
-            _countryDal = countryDal;
-        }
-
         public IResult Add(Country country)
         {
             throw new NotImplementedException();

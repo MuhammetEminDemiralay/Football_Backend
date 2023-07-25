@@ -11,6 +11,6 @@ using System.Threading.Tasks;
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EFCareerStatDal :EFEntityRepositoryBase<CareerStat ,FootballContext>, ICareerStatDal
-    {
+    {                                                                   
     }
 }
