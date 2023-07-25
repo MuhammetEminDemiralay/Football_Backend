@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace DataAccess.Concrete.EntityFramework.Context
 {
     public class FootballContext : DbContext
     {
         public DbSet<CareerStat> CareerStats { get; set; }
-        public DbSet<City> Citys { get; set; }
+        public DbSet<Club> Citys { get; set; }
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Continent> Continents { get; set; }
         public DbSet<Country> Countrys { get; set; }
