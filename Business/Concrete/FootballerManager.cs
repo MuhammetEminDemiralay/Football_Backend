@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constant;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Business.Concrete
 {
@@ -20,6 +22,7 @@ namespace Business.Concrete
             _footballerDal = footballerDal;
         }
 
+        [FluentValidationAspect(typeof(FootballerValidator))]
         public IResult Add(Footballer footballer)
         {
             _footballerDal.Add(footballer);

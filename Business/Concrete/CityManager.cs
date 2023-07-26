@@ -15,6 +15,11 @@ namespace Business.Concrete
     {
         ICityDal _cityDal;
 
+        public CityManager(ICityDal cityDal)
+        {
+            _cityDal = cityDal;
+        }
+
         public IResult Add(City city)
         {
             _cityDal.Add(city);
