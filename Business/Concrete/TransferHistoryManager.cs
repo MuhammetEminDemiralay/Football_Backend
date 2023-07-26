@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,27 +22,30 @@ namespace Business.Concrete
 
         public IResult Add(TransferHistory transferHistory)
         {
-            throw new NotImplementedException();
+            _transferHistoryDal.Add(transferHistory);
+            return new SuccessResult(Messages.TransferHistoryAdd);
         }
 
         public IResult Delete(TransferHistory transferHistory)
         {
-            throw new NotImplementedException();
+            _transferHistoryDal.Delete(transferHistory);
+            return new SuccessResult(Messages.TransferHistoryDelete);
         }
 
         public IDataResult<TransferHistory> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<TransferHistory>(_transferHistoryDal.Get(p => p.Id == id), Messages.TransferHistoryGet);
         }
 
         public IDataResult<List<TransferHistory>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<TransferHistory>>(_transferHistoryDal.GetAll(), Messages.TransferHistoryList);
         }
 
         public IResult Update(TransferHistory transferHistory)
         {
-            throw new NotImplementedException();
+            _transferHistoryDal.Update(transferHistory);
+            return new SuccessResult(Messages.TransferHistoryUpdate);
         }
     }
 }

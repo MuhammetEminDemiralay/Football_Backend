@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,27 +22,30 @@ namespace Business.Concrete
 
         public IResult Add(Continent continent)
         {
-            throw new NotImplementedException();
+            _continentDal.Add(continent);
+            return new SuccessResult(Messages.ContinentAdd);
         }
 
         public IResult Delete(Continent continent)
         {
-            throw new NotImplementedException();
+            _continentDal.Delete(continent);
+            return new SuccessResult(Messages.ContinentDelete);
         }
 
         public IDataResult<Continent> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Continent>(_continentDal.Get(p => p.Id == id), Messages.ContinentGet);
         }
 
         public IDataResult<List<Continent>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Continent>>(_continentDal.GetAll(), Messages.ContinentList);
         }
 
         public IResult Update(Continent continent)
         {
-            throw new NotImplementedException();
+            _continentDal.Update(continent);
+            return new SuccessResult(Messages.ContinentUpdate);
         }
     }
 }

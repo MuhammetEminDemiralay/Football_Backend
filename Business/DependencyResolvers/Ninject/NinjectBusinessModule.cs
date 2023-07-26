@@ -19,7 +19,7 @@ namespace Business.DependencyResolvers.Ninject
             Bind<ICareerStatDal>().To<EFCareerStatDal>().InSingletonScope();
 
             Bind<ICityService>().To<CityManager>().InSingletonScope();
-            Bind<ICityDal>().To<EFCityDal>().InTransientScope();
+            Bind<ICityDal>().To<EFCityDal>().InSingletonScope();
 
             Bind<IClubService>().To<ClubManager>().InSingletonScope();
             Bind<IClubDal>().To<EFClubDal>().InSingletonScope();

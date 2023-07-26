@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,27 +22,30 @@ namespace Business.Concrete
 
         public IResult Add(CareerStat careerStat)
         {
-            throw new NotImplementedException();
+            _careerStatDal.Add(careerStat);
+            return new SuccessResult(Messages.CareerStatAdded);
         }
 
         public IResult Delete(CareerStat careerStat)
         {
-            throw new NotImplementedException();
+            _careerStatDal.Delete(careerStat);
+            return new SuccessResult(Messages.CareerStatDelete);
         }
 
         public IDataResult<CareerStat> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<CareerStat>(_careerStatDal.Get(p => p.Id == id), Messages.CareerStatGet);
         }
 
         public IDataResult<List<CareerStat>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<CareerStat>>(_careerStatDal.GetAll(), Messages.CareerStatListed);
         }
 
         public IResult Update(CareerStat careerStat)
         {
-            throw new NotImplementedException();
+            _careerStatDal.Update(careerStat);
+            return new SuccessResult(Messages.CareerStatUpdate);
         }
     }
 }

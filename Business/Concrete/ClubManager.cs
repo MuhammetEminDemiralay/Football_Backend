@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,27 +22,30 @@ namespace Business.Concrete
 
         public IResult Add(Club club)
         {
-            throw new NotImplementedException();
+            _clubDal.Add(club);
+            return new SuccessResult(Messages.ClubAdd);
         }
 
         public IResult Delete(Club club)
         {
-            throw new NotImplementedException();
+            _clubDal.Delete(club);
+            return new SuccessResult(Messages.ClubDelete);
         }
 
         public IDataResult<Club> Get(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Club>(_clubDal.Get(p => p.Id == id), Messages.ClubGet);
         }
 
         public IDataResult<List<Club>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Club>>(_clubDal.GetAll(), Messages.ClubList);
         }
 
         public IResult Update(Club club)
         {
-            throw new NotImplementedException();
+            _clubDal.Update(club);
+            return new SuccessResult(Messages.ClubUpdate);
         }
     }
 }
