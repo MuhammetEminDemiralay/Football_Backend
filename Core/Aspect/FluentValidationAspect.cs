@@ -1,5 +1,7 @@
-﻿using FluentValidation;
-using PostSharp.Aspects;
+﻿using Castle.DynamicProxy;
+using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Interceptors;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace Core.Aspect
 {
-    [Serializable]
-    public class FluentValidationAspect : OnMethodBoundaryAspect
+    public class FluentValidationAspect : MethodInterception
     {
         Type _validatorType;
 
@@ -22,13 +23,12 @@ namespace Core.Aspect
             _validatorType = validatorType;
         }
 
-        public override void OnEntry(MethodExecutionArgs args)
+        protected override void OnBefore(IInvocation invocation)
         {
             var validator = (IValidator)Activator.CreateInstance(_validatorType);
             var entityType = _validatorType.BaseType.GetGenericArguments()[0];
-            var entities = args.Arguments.Where(p => p.GetType() == entityType);
-
-            foreach(var entity in entities)
+            var entities = invocation.Arguments.Where(t => t.GetType() == entityType);
+            foreach (var entity in entities)
             {
                 ValidationTool.Validate(validator, entity);
             }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class FootballerValidator : AbstractValidator<Footballer>
+    public class CityValidator : AbstractValidator<City>
     {
-        public FootballerValidator()
+        public CityValidator()
         {
-            
+            RuleFor(p => p.CityName).MinimumLength(3);
         }
     }
 }
