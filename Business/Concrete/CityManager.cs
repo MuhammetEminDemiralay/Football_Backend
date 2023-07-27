@@ -2,6 +2,7 @@
 using Business.Constant;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,6 +26,12 @@ namespace Business.Concrete
         [FluentValidationAspect(typeof(CityValidator))]
         public IResult Add(City city)
         {
+            var result = BusinessRules.Run(CheckIfCityNameExitst(city.CityName));
+            if(result != null)
+            {
+                return result;
+            }
+
             _cityDal.Add(city);
             return new SuccessResult(Messages.CityAdd);
         }
@@ -50,5 +57,19 @@ namespace Business.Concrete
             _cityDal.Update(city);
             return new SuccessResult(Messages.CityUpdate);
         }
+
+
+        // Business Rules
+
+        private IResult CheckIfCityNameExitst(string cityName)
+        {
+            var result = _cityDal.GetAll(p => p.CityName == cityName).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.AlreadyCityName);
+            }
+            return new SuccessResult();
+        }
+
     }
 }
