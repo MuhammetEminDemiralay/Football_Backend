@@ -69,5 +69,8 @@ namespace Business.Constant
         public static string TransferHistoryUpdate = "Transfer history updated";
 
         public static string AlreadyCityName = "City name already exist";
+
+        public static string GetByCountryId = "Get leagues by country ıd";
+        public static string GetByClubsLeagueId = "Get clubs by league ıd";
     }
 }

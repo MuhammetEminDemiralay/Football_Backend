@@ -45,6 +45,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(), Messages.FootballerList);
         }
 
+        public IDataResult<List<Footballer>> GetFootballersByClubId(int clubId)
+        {
+            return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(p => p.ClubId == clubId));
+        }
+
         public IResult Update(Footballer footballer)
         {
             _footballerDal.Update(footballer);

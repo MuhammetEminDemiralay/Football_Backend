@@ -75,5 +75,17 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpGet("getFootballersByClubId")]
+        public IActionResult GetFootballersByClubId(int footballerId)
+        {
+            var result = _footballerService.GetFootballersByClubId(footballerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
     }
 }

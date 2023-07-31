@@ -42,6 +42,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<League>>(_leagueDal.GetAll(), Messages.LeagueList);
         }
 
+        public IDataResult<List<League>> GetLeaguesbyCountryId(int countryId)
+        {
+            return new SuccessDataResult<List<League>>(_leagueDal.GetAll(p => p.CountryId == countryId), Messages.GetByCountryId);
+        }
+
         public IResult Update(League league)
         {
             _leagueDal.Update(league);

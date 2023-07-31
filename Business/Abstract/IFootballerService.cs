@@ -15,5 +15,7 @@ namespace Business.Abstract
         IResult Add(Footballer footballer);
         IResult Update(Footballer footballer);
         IResult Delete(Footballer footballer);
+
+        IDataResult<List<Footballer>> GetFootballersByClubId(int clubId); 
     }
 }

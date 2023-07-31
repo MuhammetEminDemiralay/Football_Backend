@@ -15,5 +15,8 @@ namespace Business.Abstract
         IResult Add(Club club);
         IResult Update(Club club);
         IResult Delete(Club club);
+
+
+        IDataResult<List<Club>> GetClubsByLeagueId(int leagueId);
     }
 }

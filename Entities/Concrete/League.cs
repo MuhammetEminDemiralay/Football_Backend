@@ -16,6 +16,6 @@ namespace Entities.Concrete
         public int TotalMarketValue { get; set; }
         public int Players { get; set; }
         public int LeagueLevel { get; set; }
-        public string ReigningChampion { get; set; }
+        public int ReigningChampion { get; set; }
     }
 }

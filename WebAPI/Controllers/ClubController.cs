@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("update")]
+        [HttpPost("update")]
         public IActionResult Update(Club club)
         {
             var result = _clubService.Update(club);
@@ -64,10 +64,23 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Club club)
         {
             var result = _clubService.Delete(club);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
+
+
+        [HttpGet("getClubsByLeagueId")]
+        public IActionResult GetClubsByLeagueId(int leagueId)
+        {
+            var result = _clubService.GetClubsByLeagueId(leagueId);
             if (result.Success)
             {
                 return Ok(result);

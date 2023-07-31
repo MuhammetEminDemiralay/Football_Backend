@@ -75,5 +75,20 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpGet("getLeaguesbyCountryId")]
+        public IActionResult GetLeaguesbyCountryId(int countryId)
+        {
+            var result = _leagueService.GetLeaguesbyCountryId(countryId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
+
+
+
     }
 }

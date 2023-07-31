@@ -42,6 +42,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Club>>(_clubDal.GetAll(), Messages.ClubList);
         }
 
+        public IDataResult<List<Club>> GetClubsByLeagueId(int leagueId)
+        {
+            return new SuccessDataResult<List<Club>>(_clubDal.GetAll(p => p.LeagueId == leagueId), Messages.GetByClubsLeagueId);
+        }
+
         public IResult Update(Club club)
         {
             _clubDal.Update(club);
