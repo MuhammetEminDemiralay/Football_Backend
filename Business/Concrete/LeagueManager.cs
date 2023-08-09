@@ -3,6 +3,7 @@ using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +43,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<League>>(_leagueDal.GetAll(), Messages.LeagueList);
         }
 
-        public IDataResult<List<League>> GetLeaguesbyCountryId(int countryId)
+
+        public IDataResult<List<LeagueDetailDto>> GetLeaguesbyCountryId(int countryId)
         {
-            return new SuccessDataResult<List<League>>(_leagueDal.GetAll(p => p.CountryId == countryId), Messages.GetByCountryId);
+            return new SuccessDataResult<List<LeagueDetailDto>>(_leagueDal.GetLeagueDetailDtos(p => p.CountryId == countryId), Messages.GetByCountryId);
         }
 
         public IResult Update(League league)

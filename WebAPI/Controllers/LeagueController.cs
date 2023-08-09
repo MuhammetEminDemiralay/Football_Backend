@@ -76,7 +76,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("getLeaguesbyCountryId")]
+        [HttpGet("getLeaguesDetailbyCountryId")]
         public IActionResult GetLeaguesbyCountryId(int countryId)
         {
             var result = _leagueService.GetLeaguesbyCountryId(countryId);
@@ -87,6 +87,8 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+
 
 
 

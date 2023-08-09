@@ -3,6 +3,7 @@ using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,11 @@ namespace Business.Concrete
         public IDataResult<List<NationalTeam>> GetAll()
         {
             return new SuccessDataResult<List<NationalTeam>>(_nationalTeamDal.GetAll(), Messages.NationalTeamList);
+        }
+
+        public IDataResult<List<NationalTeamDetailDto>> GetNationalTeamsDetailByCountryId(int countryId)
+        {
+            return new SuccessDataResult<List<NationalTeamDetailDto>>(_nationalTeamDal.GetNationalTeamDetailByCountryId(p => p.CountryId == countryId), "National team detail listed....");
         }
 
         public IResult Update(NationalTeam nationalTeam)

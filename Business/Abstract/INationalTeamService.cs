@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace Business.Abstract
         IResult Add(NationalTeam nationalTeam);
         IResult Update(NationalTeam nationalTeam);
         IResult Delete(NationalTeam nationalTeam);
+
+        IDataResult<List<NationalTeamDetailDto>> GetNationalTeamsDetailByCountryId(int countryId);
     }
 }

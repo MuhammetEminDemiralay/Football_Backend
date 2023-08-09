@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using NHibernate.Mapping;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Business.Abstract
         IResult Add(League league);
         IResult Update(League league);
         IResult Delete(League league);
-        IDataResult<List<League>> GetLeaguesbyCountryId(int countryId);
+        IDataResult<List<LeagueDetailDto>> GetLeaguesbyCountryId(int countryId);
+        //IDataResult<List<LeagueDetailDto>> GetLeagueDetailByLeagueId(int leagueId);
     }
 }

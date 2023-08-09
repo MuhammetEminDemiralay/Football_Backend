@@ -48,6 +48,12 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<TransferHistoryManager>().As<ITransferHistoryService>().SingleInstance();
             builder.RegisterType<EFTransferHistoryDal>().As<ITransferHistoryDal>().SingleInstance();
 
+            builder.RegisterType<CountryImageManager>().As<ICountryImageService>().SingleInstance();
+            builder.RegisterType<EFCountryImageDal>().As<ICountryImageDal>().SingleInstance();
+
+            builder.RegisterType<LeagueImageManager>().As<ILeagueImageService>().SingleInstance();
+            builder.RegisterType<EFLeagueImageDal>().As<ILeagueImageDal>().SingleInstance();
+
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

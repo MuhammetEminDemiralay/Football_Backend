@@ -5,15 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.Dtos
 {
-    public class NationalTeam : IEntity
+    public class NationalTeamDetailDto : IDto
     {
         public int Id { get; set; }
         public int CountryId { get; set; }
         public int CountryImageId { get; set; }
-        public int NationalTeamLevel { get; set; }
+        public string CountryImagePath { get; set; }
         public string NationalTeamName { get; set; }
+        public DateTime Date { get; set; }
+        public int NationalTeamLevel { get; set; }
         public int SquadSize { get; set; }
         public int AverageAge { get; set; }
         public int MarketValue { get; set; }

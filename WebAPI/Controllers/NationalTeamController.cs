@@ -7,11 +7,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NationaTeamController : ControllerBase
+    public class NationalTeamController : ControllerBase
     {
         INationalTeamService _nationalService;
 
-        public NationaTeamController(INationalTeamService nationalService)
+        public NationalTeamController(INationalTeamService nationalService)
         {
             _nationalService = nationalService;
         }
@@ -68,6 +68,19 @@ namespace WebAPI.Controllers
         public IActionResult Delete(NationalTeam nationalTeam)
         {
             var result = _nationalService.Delete(nationalTeam);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
+
+
+        [HttpGet("getnationalteamDetailbycountryıd")]
+        public IActionResult GetNationalTeamsByCountryId(int countryId)
+        {
+            var result = _nationalService.GetNationalTeamsDetailByCountryId(countryId);
             if (result.Success)
             {
                 return Ok(result);

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Country : IEntity 
+    public class LeagueImage : IEntity
     {
         public int Id { get; set; }
-        public string CountryName { get; set; }
+        public int LeagueId { get; set; }
+        public string LeagueImagePath { get; set; }
+        public DateTime Date { get; set; }
     }
 }

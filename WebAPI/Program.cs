@@ -30,6 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
+
 app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
 
 app.UseHttpsRedirection();
