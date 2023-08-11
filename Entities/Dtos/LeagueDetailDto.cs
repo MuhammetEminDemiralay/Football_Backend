@@ -20,5 +20,6 @@ namespace Entities.Dtos
         public int Players { get; set; }
         public int LeagueLevel { get; set; }
         public int ReigningChampion { get; set; }
+        public int? Foreigners{ get; set; }
     }
 }

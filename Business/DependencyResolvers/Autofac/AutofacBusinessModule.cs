@@ -54,6 +54,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<LeagueImageManager>().As<ILeagueImageService>().SingleInstance();
             builder.RegisterType<EFLeagueImageDal>().As<ILeagueImageDal>().SingleInstance();
 
+            builder.RegisterType<ClubImageManager>().As<IClubImageService>().SingleInstance();
+            builder.RegisterType<EFClubImageDal>().As<IClubImageDal>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

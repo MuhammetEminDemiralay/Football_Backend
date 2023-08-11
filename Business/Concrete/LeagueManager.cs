@@ -33,9 +33,9 @@ namespace Business.Concrete
             return new SuccessResult(Messages.LeagueDelete);
         }
 
-        public IDataResult<League> Get(int id)
+        public IDataResult<LeagueDetailDto> GetLegaueDetailByLeagueId(int leagueId)
         {
-            return new SuccessDataResult<League>(_leagueDal.Get(p => p.Id == id), Messages.LeagueGet);
+            return new SuccessDataResult<LeagueDetailDto>(_leagueDal.GetLeagueDetailByLeagueId(p => p.Id == leagueId), "lig ıd' ye göre lig detayları listelendi");
         }
 
         public IDataResult<List<League>> GetAll()

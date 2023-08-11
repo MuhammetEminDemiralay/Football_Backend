@@ -28,17 +28,17 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("get")]
-        public IActionResult Get(int id)
-        {
-            var result = _leagueService.Get(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
+        //[HttpGet("get")]
+        //public IActionResult Get(int id)
+        //{
+        //    var result = _leagueService.Get(id);
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
 
-            return BadRequest();
-        }
+        //    return BadRequest();
+        //}
 
         [HttpPost("add")]
         public IActionResult Add(League league)
@@ -89,6 +89,17 @@ namespace WebAPI.Controllers
         }
 
 
+        [HttpGet("getLeagueDetailByLeagueId")]
+        public IActionResult GetLegaueDetailByLeagueId(int leagueId)
+        {
+            var result = _leagueService.GetLegaueDetailByLeagueId(leagueId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
 
 
 

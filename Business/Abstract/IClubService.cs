@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,6 @@ namespace Business.Abstract
         IResult Delete(Club club);
 
 
-        IDataResult<List<Club>> GetClubsByLeagueId(int leagueId);
+        IDataResult<List<ClubDetailDto>> GetClubsDetailByLeagueId(int leagueId);
     }
 }

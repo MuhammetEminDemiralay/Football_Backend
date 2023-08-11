@@ -77,10 +77,10 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("getClubsByLeagueId")]
+        [HttpGet("getClubsDetailByLeagueId")]
         public IActionResult GetClubsByLeagueId(int leagueId)
         {
-            var result = _clubService.GetClubsByLeagueId(leagueId);
+            var result = _clubService.GetClubsDetailByLeagueId(leagueId);
             if (result.Success)
             {
                 return Ok(result);
