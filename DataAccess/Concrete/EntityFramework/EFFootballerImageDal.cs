@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFFootballerDal : EFEntityRepositoryBase<Footballer,FootballContext>, IFootballerDal
+    public class EFFootballerImageDal : EFEntityRepositoryBase<FootballerImage, FootballContext>, IFootballerImageDal
     {
-
     }
 }

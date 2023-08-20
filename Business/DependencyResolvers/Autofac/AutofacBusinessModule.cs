@@ -57,6 +57,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<ClubImageManager>().As<IClubImageService>().SingleInstance();
             builder.RegisterType<EFClubImageDal>().As<IClubImageDal>().SingleInstance();
 
+            builder.RegisterType<FootballerImageManager>().As<IFootballerImageService>().SingleInstance();
+            builder.RegisterType<EFFootballerImageDal>().As<IFootballerImageDal>().SingleInstance();
+
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

@@ -10,10 +10,10 @@ namespace Entities.Concrete
     public class League :IEntity
     {
         public int Id { get; set; }
+        public int CountryId { get; set; }
         public int LeagueImageId { get; set; }
         public string LeagueName { get; set; }
         public int NumberOfTeams { get; set; }
-        public int CountryId { get; set; }
         public int TotalMarketValue { get; set; }
         public int Players { get; set; }
         public int LeagueLevel { get; set; }

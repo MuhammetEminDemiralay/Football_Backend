@@ -26,7 +26,8 @@ namespace DataAccess.Concrete.EntityFramework
                              select new ClubDetailDto
                              {
                                  Id = club.Id,
-                                 ClubId = clubImage.Id,
+                                 LeagueId = club.LeagueId,
+                                 CountryId = club.CountryId,
                                  ClubImageId = clubImage.Id,
                                  ClubImagePath = clubImage.ClubImagePath,
                                  ClubMarketValue = club.ClubMarketValue,
@@ -35,12 +36,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  CurrentTransferRecord = club.CurrentTransferRecord,
                                  Date = clubImage.Date,
                                  Foreigners = club.Foreigners,
-                                 LeagueId = club.LeagueId,
                                  NationalTeamPlayers = club.NationalTeamPlayers,
                                  SquadSize = club.SquadSize,
                                  StadiumCapacity = club.StadiumCapacity,
                                  StadiumName = club.StadiumName
-                                 
                              };
 
                 return filter == null ? result.ToList() : result.Where(filter).ToList();

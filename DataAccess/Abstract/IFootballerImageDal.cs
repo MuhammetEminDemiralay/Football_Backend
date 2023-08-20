@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IFootballerDal : IEntityRepository<Footballer>
+    public interface IFootballerImageDal : IEntityRepository<FootballerImage>
     {
-        
     }
 }

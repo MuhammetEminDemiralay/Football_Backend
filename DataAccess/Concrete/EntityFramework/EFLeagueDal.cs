@@ -28,7 +28,6 @@ namespace DataAccess.Concrete.EntityFramework
                              select new LeagueDetailDto
                              {
                                  Id = league.Id,
-                                 LeagueId = leagueImage.Id,
                                  LeagueImageId = leagueImage.Id,
                                  CountryId = league.CountryId,
                                  Date = leagueImage.Date,
@@ -58,7 +57,6 @@ namespace DataAccess.Concrete.EntityFramework
                              select new LeagueDetailDto
                              {
                                  Id = league.Id,
-                                 LeagueId = leagueImage.Id,
                                  LeagueImageId = leagueImage.Id,
                                  CountryId = league.CountryId,
                                  Date = leagueImage.Date,

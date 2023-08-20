@@ -11,8 +11,8 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public int LeagueId { get; set; }
+        public int CountryId { get; set; }
         public string ClubName { get; set; }
-        public string ClubImage { get; set; }
         public int SquadSize { get; set; }
         public int AverageAge { get; set; }
         public int NationalTeamPlayers { get; set; }

@@ -23,6 +23,7 @@ namespace DataAccess.Concrete.EntityFramework.Context
         public DbSet<CountryImage> CountryImages { get; set; }
         public DbSet<LeagueImage> LeagueImages { get; set; }
         public DbSet<ClubImage> ClubImages { get; set; }
+        public DbSet<FootballerImage> FootballerImages{ get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
