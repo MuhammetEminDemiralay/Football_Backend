@@ -5,6 +5,7 @@ using Core.Aspect;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,11 @@ namespace Business.Concrete
         public IDataResult<List<Footballer>> GetFootballersByClubId(int clubId)
         {
             return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(p => p.ClubId == clubId));
+        }
+
+        public IDataResult<List<FootballerDetailDto>> GetFootballersDetailByClubId(int clubId)
+        {
+            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByClubId(p => p.ClubId == clubId), "Club ıd ye göre futbolcuların detayları getirilidi");
         }
 
         public IResult Update(Footballer footballer)

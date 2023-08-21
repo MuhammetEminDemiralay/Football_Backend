@@ -88,5 +88,17 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpGet("getClubDetailByClubId")]
+        public IActionResult GetClubDetailByClubId(int clubId)
+        {
+            var result = _clubService.GetClubDetailByClubId(clubId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
     }
 }

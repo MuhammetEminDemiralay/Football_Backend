@@ -77,9 +77,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getFootballersByClubId")]
-        public IActionResult GetFootballersByClubId(int footballerId)
+        public IActionResult GetFootballersByClubId(int clubId)
         {
-            var result = _footballerService.GetFootballersByClubId(footballerId);
+            var result = _footballerService.GetFootballersByClubId(clubId);
             if (result.Success)
             {
                 return Ok(result);
@@ -87,5 +87,19 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpGet("getFootballersDetailByClubId")]
+        public IActionResult GetFootballersDetailByClubId(int clubId)
+        {
+            var result = _footballerService.GetFootballersDetailByClubId(clubId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
+
+
     }
 }

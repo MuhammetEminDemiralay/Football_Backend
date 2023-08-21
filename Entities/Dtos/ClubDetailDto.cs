@@ -12,7 +12,6 @@ namespace Entities.Dtos
         public int Id { get; set; }
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
-        public int ClubImageId { get; set; }
         public string ClubImagePath { get; set; }
         public DateTime Date { get; set; }
         public string ClubName { get; set; }

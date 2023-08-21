@@ -13,11 +13,13 @@ namespace Business.Abstract
     {
         IDataResult<List<Club>> GetAll();
         IDataResult<Club> Get(int id);
+        IDataResult<ClubDetailDto> GetClubDetailByClubId(int clubId);
         IResult Add(Club club);
         IResult Update(Club club);
         IResult Delete(Club club);
 
 
         IDataResult<List<ClubDetailDto>> GetClubsDetailByLeagueId(int leagueId);
+
     }
 }

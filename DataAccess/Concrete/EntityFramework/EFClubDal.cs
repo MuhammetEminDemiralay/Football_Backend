@@ -14,6 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EFClubDal : EFEntityRepositoryBase<Club, FootballContext>, IClubDal
     {
+
         public List<ClubDetailDto> GetClubDetailDto(Expression<Func<ClubDetailDto, bool>> filter = null)
         {
             using (var context = new FootballContext())
@@ -28,7 +29,6 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = club.Id,
                                  LeagueId = club.LeagueId,
                                  CountryId = club.CountryId,
-                                 ClubImageId = clubImage.Id,
                                  ClubImagePath = clubImage.ClubImagePath,
                                  ClubMarketValue = club.ClubMarketValue,
                                  AverageAge = club.AverageAge,
@@ -43,6 +43,37 @@ namespace DataAccess.Concrete.EntityFramework
                              };
 
                 return filter == null ? result.ToList() : result.Where(filter).ToList();
+            }
+        }
+
+        public ClubDetailDto GetClubDetailByClubId(Expression<Func<ClubDetailDto, bool>> filter)
+        {
+            using (var context = new FootballContext())
+            {
+                var result = from club in context.Clubs
+                             join clubImage in context.ClubImages
+                             on club.Id equals clubImage.ClubId
+
+
+                             select new ClubDetailDto
+                             {
+                                 Id = club.Id,
+                                 LeagueId = club.LeagueId,
+                                 CountryId = club.CountryId,
+                                 ClubImagePath = clubImage.ClubImagePath,
+                                 ClubMarketValue = club.ClubMarketValue,
+                                 AverageAge = club.AverageAge,
+                                 ClubName = club.ClubName,
+                                 CurrentTransferRecord = club.CurrentTransferRecord,
+                                 Date = clubImage.Date,
+                                 Foreigners = club.Foreigners,
+                                 NationalTeamPlayers = club.NationalTeamPlayers,
+                                 SquadSize = club.SquadSize,
+                                 StadiumCapacity = club.StadiumCapacity,
+                                 StadiumName = club.StadiumName
+                             };
+
+                return result.Where(filter).FirstOrDefault();
             }
         }
     }

@@ -43,6 +43,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Club>>(_clubDal.GetAll(), Messages.ClubList);
         }
 
+        public IDataResult<ClubDetailDto> GetClubDetailByClubId(int clubId)
+        {
+            return new SuccessDataResult<ClubDetailDto>(_clubDal.GetClubDetailByClubId(p => p.Id == clubId),"Club ıd ye göre club detayları getirildi");
+        }
+
         public IDataResult<List<ClubDetailDto>> GetClubsDetailByLeagueId(int leagueId)
         {
             return new SuccessDataResult<List<ClubDetailDto>>(_clubDal.GetClubDetailDto(p => p.LeagueId == leagueId), Messages.GetByClubsLeagueId);

@@ -70,7 +70,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  
                              };
 
-                return result.FirstOrDefault(filter);
+                return result.Where(filter).FirstOrDefault();
 
             }
         }

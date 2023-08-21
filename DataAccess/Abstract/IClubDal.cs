@@ -14,5 +14,6 @@ namespace DataAccess.Abstract
     public interface IClubDal : IEntityRepository<Club>
     {
         List<ClubDetailDto> GetClubDetailDto(Expression<Func<ClubDetailDto, bool>> filter = null);
+        ClubDetailDto GetClubDetailByClubId(Expression<Func<ClubDetailDto, bool>> filter);
     }
 }
