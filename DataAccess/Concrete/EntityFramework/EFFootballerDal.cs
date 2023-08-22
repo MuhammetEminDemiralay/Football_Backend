@@ -23,6 +23,10 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.Id equals footballerImage.FootballerId
                              join position in context.Positions
                              on footballer.PositionId equals position.Id
+                             join countryImage in context.CountryImages
+                             on footballer.CountryId equals countryImage.CountryId
+                             join foot in context.Foots
+                             on footballer.FootId equals foot.Id
 
                              select new FootballerDetailDto
                              {
@@ -37,7 +41,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  Age = footballer.Age,
                                  Height = footballer.Height,
                                  Name = footballer.Name,
-                                 FootballerValue = footballer.FootballerValue
+                                 FootballerValue = footballer.FootballerValue,
+                                 CountryImagePath = countryImage.CountryImagePath,
+                                 FootName = foot.FootName
                              };
 
 

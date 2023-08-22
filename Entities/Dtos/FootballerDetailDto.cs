@@ -21,6 +21,8 @@ namespace Entities.Dtos
         public int Height { get; set; }
         public int FootballerValue { get; set; }
         public int PlayerNumber { get; set; }
+        public string CountryImagePath { get; set; }
+        public string FootName { get; set; }
 
     }
 }
