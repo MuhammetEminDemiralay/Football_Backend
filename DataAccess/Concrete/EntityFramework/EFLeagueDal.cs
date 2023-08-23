@@ -25,34 +25,6 @@ namespace DataAccess.Concrete.EntityFramework
                              on league.LeagueImageId equals leagueImage.Id
 
 
-                             select new LeagueDetailDto
-                             {
-                                 Id = league.Id,
-                                 LeagueImageId = leagueImage.Id,
-                                 CountryId = league.CountryId,
-                                 Date = leagueImage.Date,
-                                 LeagueImagePath = leagueImage.LeagueImagePath,
-                                 LeagueLevel = league.LeagueLevel,
-                                 LeagueName = league.LeagueName,
-                                 NumberOfTeams = league.NumberOfTeams,
-                                 Players = league.Players,
-                                 ReigningChampion = league.ReigningChampion,
-                                 TotalMarketValue = league.TotalMarketValue
-
-                             };
-
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
-            }
-        }
-
-        public LeagueDetailDto GetLeagueDetailByLeagueId(Expression<Func<LeagueDetailDto, bool>> filter)
-        {
-            using (var context = new FootballContext())
-            {
-                var result = from league in context.Leagues
-                             join leagueImage in context.LeagueImages
-                             on league.LeagueImageId equals leagueImage.Id
-
 
                              select new LeagueDetailDto
                              {
@@ -67,7 +39,39 @@ namespace DataAccess.Concrete.EntityFramework
                                  Players = league.Players,
                                  ReigningChampion = league.ReigningChampion,
                                  TotalMarketValue = league.TotalMarketValue,
-                                 
+                             };
+
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
+            }
+        }
+
+        public LeagueDetailDto GetLeagueDetailByLeagueId(Expression<Func<LeagueDetailDto, bool>> filter)
+        {
+            using (var context = new FootballContext())
+            {
+                var result = from league in context.Leagues
+                             join leagueImage in context.LeagueImages
+                             on league.LeagueImageId equals leagueImage.Id
+                             join countryImage in context.CountryImages
+                             on league.CountryId equals countryImage.CountryId
+                             join country in context.Countrys
+                             on league.CountryId equals country.Id
+
+                             select new LeagueDetailDto
+                             {
+                                 Id = league.Id,
+                                 LeagueImageId = leagueImage.Id,
+                                 CountryId = league.CountryId,
+                                 Date = leagueImage.Date,
+                                 LeagueImagePath = leagueImage.LeagueImagePath,
+                                 CountryImagePath = countryImage.CountryImagePath,
+                                 LeagueLevel = league.LeagueLevel,
+                                 LeagueName = league.LeagueName,
+                                 NumberOfTeams = league.NumberOfTeams,
+                                 Players = league.Players,
+                                 ReigningChampion = league.ReigningChampion,
+                                 TotalMarketValue = league.TotalMarketValue,
+                                 CountryName = country.CountryName
                              };
 
                 return result.Where(filter).FirstOrDefault();

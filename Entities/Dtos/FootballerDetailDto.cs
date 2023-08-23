@@ -14,6 +14,10 @@ namespace Entities.Dtos
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
         public string FootballerImagePath { get; set; }
+        public string ClubImagePath { get; set; }
+        public string LeagueImagePath { get; set; }
+        public string? FootballerCountryImagePath { get; set; }
+        public string? LeagueCountryImagePath { get; set; }
         public string PositionName { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -21,8 +25,10 @@ namespace Entities.Dtos
         public int Height { get; set; }
         public int FootballerValue { get; set; }
         public int PlayerNumber { get; set; }
-        public string CountryImagePath { get; set; }
         public string FootName { get; set; }
+        public string FootballerCountryName { get; set; }
+        public int LeagueLevel { get; set; }
+        public string LeagueName { get; set; }
 
     }
 }

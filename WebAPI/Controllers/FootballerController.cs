@@ -100,6 +100,17 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
+        [HttpGet("getFootballerDetailByFootballerId")]
+        public IActionResult GetFootballerDetailByFootballerId(int footballerId)
+        {
+            var result = _footballerService.GetFootballerDetailByFootballerId(footballerId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
 
     }
 }

@@ -13,6 +13,8 @@ namespace Entities.Dtos
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
         public string ClubImagePath { get; set; }
+        public string LeagueImagePath { get; set; }
+        public string CountryImagePath { get; set; }
         public DateTime Date { get; set; }
         public string ClubName { get; set; }
         public int SquadSize { get; set; }
@@ -23,5 +25,7 @@ namespace Entities.Dtos
         public int StadiumCapacity { get; set; }
         public int CurrentTransferRecord { get; set; }
         public int ClubMarketValue { get; set; }
+        public int LeagueLevel { get; set; }
+        public string LeagueName { get; set; }
     }
 }

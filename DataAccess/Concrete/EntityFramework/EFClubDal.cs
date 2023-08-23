@@ -53,6 +53,12 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from club in context.Clubs
                              join clubImage in context.ClubImages
                              on club.Id equals clubImage.ClubId
+                             join leagueImage in context.LeagueImages
+                             on club.LeagueId equals leagueImage.LeagueId
+                             join countryImage in context.CountryImages
+                             on club.CountryId equals countryImage.CountryId
+                             join league in context.Leagues
+                             on club.LeagueId equals league.Id
 
 
                              select new ClubDetailDto
@@ -61,6 +67,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  LeagueId = club.LeagueId,
                                  CountryId = club.CountryId,
                                  ClubImagePath = clubImage.ClubImagePath,
+                                 LeagueImagePath = leagueImage.LeagueImagePath,
+                                 CountryImagePath = countryImage.CountryImagePath,
                                  ClubMarketValue = club.ClubMarketValue,
                                  AverageAge = club.AverageAge,
                                  ClubName = club.ClubName,
@@ -70,7 +78,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  NationalTeamPlayers = club.NationalTeamPlayers,
                                  SquadSize = club.SquadSize,
                                  StadiumCapacity = club.StadiumCapacity,
-                                 StadiumName = club.StadiumName
+                                 StadiumName = club.StadiumName,
+                                 LeagueLevel = league.LeagueLevel,
+                                 LeagueName = league.LeagueName
                              };
 
                 return result.Where(filter).FirstOrDefault();
