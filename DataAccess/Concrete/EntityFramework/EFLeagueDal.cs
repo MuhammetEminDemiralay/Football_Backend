@@ -22,14 +22,13 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from league in context.Leagues
                              join leagueImage in context.LeagueImages
-                             on league.LeagueImageId equals leagueImage.Id
+                             on league.Id equals leagueImage.LeagueId
 
 
 
                              select new LeagueDetailDto
                              {
                                  Id = league.Id,
-                                 LeagueImageId = leagueImage.Id,
                                  CountryId = league.CountryId,
                                  Date = leagueImage.Date,
                                  LeagueImagePath = leagueImage.LeagueImagePath,
@@ -51,7 +50,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from league in context.Leagues
                              join leagueImage in context.LeagueImages
-                             on league.LeagueImageId equals leagueImage.Id
+                             on league.Id equals leagueImage.LeagueId
                              join countryImage in context.CountryImages
                              on league.CountryId equals countryImage.CountryId
                              join country in context.Countrys
@@ -60,7 +59,6 @@ namespace DataAccess.Concrete.EntityFramework
                              select new LeagueDetailDto
                              {
                                  Id = league.Id,
-                                 LeagueImageId = leagueImage.Id,
                                  CountryId = league.CountryId,
                                  Date = leagueImage.Date,
                                  LeagueImagePath = leagueImage.LeagueImagePath,

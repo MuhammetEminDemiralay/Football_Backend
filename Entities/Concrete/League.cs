@@ -11,7 +11,6 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public int CountryId { get; set; }
-        public int LeagueImageId { get; set; }
         public string LeagueName { get; set; }
         public int NumberOfTeams { get; set; }
         public int TotalMarketValue { get; set; }

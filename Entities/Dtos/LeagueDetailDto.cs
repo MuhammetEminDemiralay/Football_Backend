@@ -10,7 +10,6 @@ namespace Entities.Dtos
     {
         public int Id { get; set; }
         public int CountryId { get; set; }
-        public int LeagueImageId { get; set; }
         public string LeagueImagePath { get; set; }
         public string CountryImagePath { get; set; }
         public string CountryName { get; set; }
