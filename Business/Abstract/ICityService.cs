@@ -15,5 +15,6 @@ namespace Business.Abstract
         IResult Add(City city);
         IResult Update(City city);
         IResult Delete(City city);
+        IDataResult<List<City>> GetCityByCountryId(int countryId);
     }
 }

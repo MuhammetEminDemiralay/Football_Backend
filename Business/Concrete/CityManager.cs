@@ -52,6 +52,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<City>>(_cityDal.GetAll(), Messages.CityList);
         }
 
+        public IDataResult<List<City>> GetCityByCountryId(int countryId)
+        {
+            return new SuccessDataResult<List<City>>(_cityDal.GetAll(p => p.CountryId == countryId), "Country ıd ye göre city ler listelendi");
+        }
+
         public IResult Update(City city)
         {
             _cityDal.Update(city);

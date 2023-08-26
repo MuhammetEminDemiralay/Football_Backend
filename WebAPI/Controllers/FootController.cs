@@ -7,19 +7,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CityController : ControllerBase
+    public class FootController : ControllerBase
     {
-        ICityService _cityService;
+        IFootService _footService;
 
-        public CityController(ICityService cityService)
+        public FootController(IFootService footService)
         {
-            _cityService = cityService;
+            _footService = footService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _cityService.GetAll();
+            var result = _footService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
         [HttpGet("get")]
         public IActionResult Get(int id)
         {
-            var result = _cityService.Get(id);
+            var result = _footService.Get(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(City city)
+        public IActionResult Add(Foot foot)
         {
-            var result = _cityService.Add(city);
+            var result = _footService.Add(foot);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(City city)
+        public IActionResult Update(Foot foot)
         {
-            var result = _cityService.Update(city);
+            var result = _footService.Update(foot);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,21 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(City city)
+        public IActionResult Delete(Foot foot)
         {
-            var result = _cityService.Delete(city);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest();
-        }
-
-        [HttpGet("getCityByCountryId")]
-        public IActionResult GetCityByCountryıd(int countryId)
-        {
-            var result = _cityService.GetCityByCountryId(countryId);
+            var result = _footService.Delete(foot);
             if (result.Success)
             {
                 return Ok(result);

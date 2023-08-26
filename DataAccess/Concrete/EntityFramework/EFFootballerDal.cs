@@ -69,6 +69,8 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.FootId equals foot.Id
                              join country in context.Countrys
                              on footballer.CountryId equals country.Id
+                             join city in context.Citys
+                             on footballer.CityId equals city.Id
 
 
 
@@ -88,7 +90,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  FootballerValue = footballer.FootballerValue,
                                  FootName = foot.FootName,
                                  FootballerCountryImagePath = countryImage.CountryImagePath,
-                                 FootballerCountryName = country.CountryName
+                                 FootballerCountryName = country.CountryName,
+                                 CityId = city.Id,
+                                 FootId = foot.Id,
+                                 PositionId = position.Id
+
                              };
 
                 return result.Where(filter).FirstOrDefault();

@@ -60,6 +60,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<FootballerImageManager>().As<IFootballerImageService>().SingleInstance();
             builder.RegisterType<EFFootballerImageDal>().As<IFootballerImageDal>().SingleInstance();
 
+            builder.RegisterType<FootManager>().As<IFootService>().SingleInstance();
+            builder.RegisterType<EFFootDal>().As<IFootDal>().SingleInstance();
+
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

@@ -14,12 +14,11 @@ namespace Entities.Concrete
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
         public int CityId { get; set; }
-        public int TransferHistoryId { get; set; }
-        public int CareerStatId { get; set; }
+        public int? TransferHistoryId { get; set; }
+        public int? CareerStatId { get; set; }
         public int PositionId { get; set; }
-        public int OutfitterId { get; set; }
+        public int? OutfitterId { get; set; }
         public int FootId { get; set; }
-        public int NationalTeamId { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth{ get; set; }
         public int Age { get; set; }

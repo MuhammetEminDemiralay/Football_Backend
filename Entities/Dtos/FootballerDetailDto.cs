@@ -13,6 +13,9 @@ namespace Entities.Dtos
         public int ClubId { get; set; }
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
+        public int FootId { get; set; }
+        public int CityId { get; set; }
+        public int PositionId { get; set; }
         public string FootballerImagePath { get; set; }
         public string PositionName { get; set; }
         public string Name { get; set; }
