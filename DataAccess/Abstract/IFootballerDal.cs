@@ -12,6 +12,7 @@ namespace DataAccess.Abstract
 {
     public interface IFootballerDal : IEntityRepository<Footballer>
     {
+        List<FootballerDetailDto> GetFootballersDetailByCountryId(Expression<Func<FootballerDetailDto, bool>> filter = null);
         List<FootballerDetailDto> GetFootballersDetailByClubId(Expression<Func<FootballerDetailDto, bool>> filter = null);
         FootballerDetailDto GetFootballerDetailByFootballerId(Expression<Func<FootballerDetailDto, bool>> filter);
 

@@ -25,6 +25,7 @@ namespace Entities.Concrete
         public int Height { get; set; }
         public int FootballerValue { get; set; }
         public int PlayerNumber { get; set; }
+        public bool? NationalTeamOnOff { get; set; }
 
 
     }

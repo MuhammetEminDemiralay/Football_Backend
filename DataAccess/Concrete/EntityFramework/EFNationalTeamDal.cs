@@ -21,14 +21,12 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from nationalTeam in context.NationalTeams
                              join countryImage in context.CountryImages
-                             on nationalTeam.CountryImageId equals countryImage.Id
-
+                             on nationalTeam.CountryId equals countryImage.CountryId
                              select new NationalTeamDetailDto
                              {
                                  Id = nationalTeam.Id,
                                  CountryId = nationalTeam.CountryId,
-                                 CountryImageId = countryImage.Id,
-                                 CountryImagePath = countryImage.CountryImagePath,
+                                 NationalTeamImagePath = countryImage.CountryImagePath,
                                  NationalTeamName = nationalTeam.NationalTeamName,
                                  Date = countryImage.Date,
                                  NationalTeamLevel = nationalTeam.NationalTeamLevel,

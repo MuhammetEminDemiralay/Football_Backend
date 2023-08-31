@@ -11,8 +11,7 @@ namespace Entities.Dtos
     {
         public int Id { get; set; }
         public int CountryId { get; set; }
-        public int CountryImageId { get; set; }
-        public string CountryImagePath { get; set; }
+        public string? NationalTeamImagePath { get; set; }
         public string NationalTeamName { get; set; }
         public DateTime Date { get; set; }
         public int NationalTeamLevel { get; set; }

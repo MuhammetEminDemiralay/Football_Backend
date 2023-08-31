@@ -46,6 +46,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(), Messages.FootballerList);
         }
 
+        public IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam)
+        {
+            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByCountryId(p => p.CountryId == countryId && p.NationalTeamOnOff == nationalTeam));
+        }
+
         public IDataResult<FootballerDetailDto> GetFootballerDetailByFootballerId(int footballerId)
         {
             return new SuccessDataResult<FootballerDetailDto>(_footballerDal.GetFootballerDetailByFootballerId(p => p.Id == footballerId), "Futbolcu ıd sine göre futbolcu detayları getirildi");

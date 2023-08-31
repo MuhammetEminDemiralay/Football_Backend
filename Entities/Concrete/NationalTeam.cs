@@ -11,7 +11,6 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public int CountryId { get; set; }
-        public int CountryImageId { get; set; }
         public int NationalTeamLevel { get; set; }
         public string NationalTeamName { get; set; }
         public int SquadSize { get; set; }

@@ -16,7 +16,6 @@ namespace Entities.Dtos
         public int FootId { get; set; }
         public int CityId { get; set; }
         public int PositionId { get; set; }
-        public string FootballerImagePath { get; set; }
         public string PositionName { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -26,6 +25,9 @@ namespace Entities.Dtos
         public int PlayerNumber { get; set; }
         public string FootName { get; set; }
         public string? FootballerCountryImagePath { get; set; }
+        public string? FootballerImagePath { get; set; }
         public string? FootballerCountryName { get; set; }
+        public string CityName { get; set; }
+        public bool? NationalTeamOnOff { get; set; }
     }
 }

@@ -20,5 +20,6 @@ namespace Business.Abstract
         IDataResult<List<Footballer>> GetFootballersByClubId(int clubId);
         IDataResult<List<FootballerDetailDto>> GetFootballersDetailByClubId(int clubId);
         IDataResult<FootballerDetailDto> GetFootballerDetailByFootballerId(int footballerId);
+        IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam);
     }
 }
