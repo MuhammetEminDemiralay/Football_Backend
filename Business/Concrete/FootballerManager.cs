@@ -46,9 +46,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(), Messages.FootballerList);
         }
 
-        public IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam)
+        public IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam, int nationalTeamLevel)
         {
-            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByCountryId(p => p.CountryId == countryId && p.NationalTeamOnOff == nationalTeam));
+            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByCountryId(p => p.CountryId == countryId && p.NatioanalTeamPlayerActive == nationalTeam && p.NationalTeamLevel == nationalTeamLevel));
         }
 
         public IDataResult<FootballerDetailDto> GetFootballerDetailByFootballerId(int footballerId)

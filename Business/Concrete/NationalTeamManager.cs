@@ -48,6 +48,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<NationalTeamDetailDto>>(_nationalTeamDal.GetNationalTeamDetailByCountryId(p => p.CountryId == countryId), "National team detail listed....");
         }
 
+        public IDataResult<NationalTeamDetailDto> GetNationalTeamsDetailByNationalTeamId(int nationalTeamId)
+        {
+            return new SuccessDataResult<NationalTeamDetailDto>(_nationalTeamDal.GetNationalTeamDetailByNationalTeamId(p => p.Id == nationalTeamId));
+        }
+
         public IResult Update(NationalTeam nationalTeam)
         {
             _nationalTeamDal.Update(nationalTeam);

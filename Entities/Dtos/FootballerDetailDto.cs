@@ -28,6 +28,7 @@ namespace Entities.Dtos
         public string? FootballerImagePath { get; set; }
         public string? FootballerCountryName { get; set; }
         public string CityName { get; set; }
-        public bool? NationalTeamOnOff { get; set; }
+        public bool? NatioanalTeamPlayerActive { get; set; }
+        public int? NationalTeamLevel { get; set; }
     }
 }

@@ -18,5 +18,7 @@ namespace Business.Abstract
         IResult Delete(NationalTeam nationalTeam);
 
         IDataResult<List<NationalTeamDetailDto>> GetNationalTeamsDetailByCountryId(int countryId);
+        IDataResult<NationalTeamDetailDto> GetNationalTeamsDetailByNationalTeamId(int nationalTeamId);
+
     }
 }

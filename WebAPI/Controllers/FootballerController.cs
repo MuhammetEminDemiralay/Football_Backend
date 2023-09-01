@@ -112,10 +112,10 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("getFootballerDetailByCountryId")]
-        public IActionResult GetFootballerDetailByCountryId(int countryId, bool nationalTeam)
+        [HttpGet("getFootballerDetailByNationalTeam")]
+        public IActionResult GetFootballerDetailByNationalTeam(int countryId, bool nationalTeam, int nationalTeamLevel)
         {
-            var result = _footballerService.GetFootballerDetailByCountryId(countryId, nationalTeam);
+            var result = _footballerService.GetFootballerDetailByCountryId(countryId, nationalTeam, nationalTeamLevel);
             if (result.Success)
             {
                 return Ok(result);

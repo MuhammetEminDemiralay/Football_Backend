@@ -14,5 +14,7 @@ namespace DataAccess.Abstract
     public interface INationalTeamDal : IEntityRepository<NationalTeam>
     {
         List<NationalTeamDetailDto> GetNationalTeamDetailByCountryId(Expression<Func<NationalTeamDetailDto, bool>> filter = null);
+        NationalTeamDetailDto GetNationalTeamDetailByNationalTeamId(Expression<Func<NationalTeamDetailDto, bool>> filter);
+
     }
 }

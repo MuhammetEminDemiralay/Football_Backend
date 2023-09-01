@@ -54,7 +54,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  FootId = foot.Id,
                                  PositionId = position.Id,
                                  FootballerCountryName = country.CountryName,
-                                 NationalTeamOnOff = footballer.NationalTeamOnOff
+                                 NatioanalTeamPlayerActive = footballer.NationalTeamPlayerActive,
+                                 NationalTeamLevel = footballer.NationalTeamLevel
                              };
 
 

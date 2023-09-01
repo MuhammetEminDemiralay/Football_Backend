@@ -39,5 +39,30 @@ namespace DataAccess.Concrete.EntityFramework
 
             }
         }
+
+        public NationalTeamDetailDto GetNationalTeamDetailByNationalTeamId(Expression<Func<NationalTeamDetailDto, bool>> filter)
+        {
+            using (var context = new FootballContext())
+            {
+                var result = from nationalTeam in context.NationalTeams
+                             join countryImage in context.CountryImages
+                             on nationalTeam.CountryId equals countryImage.CountryId
+
+                             select new NationalTeamDetailDto
+                             {
+                                 Id = nationalTeam.Id,
+                                 CountryId = nationalTeam.CountryId,
+                                 NationalTeamImagePath = countryImage.CountryImagePath,
+                                 NationalTeamName = nationalTeam.NationalTeamName,
+                                 Date = countryImage.Date,
+                                 NationalTeamLevel = nationalTeam.NationalTeamLevel,
+                                 SquadSize = nationalTeam.SquadSize,
+                                 AverageAge = nationalTeam.AverageAge,
+                                 MarketValue = nationalTeam.MarketValue
+                             };
+
+                return result.Where(filter).FirstOrDefault();
+            }
+        }
     }
 }

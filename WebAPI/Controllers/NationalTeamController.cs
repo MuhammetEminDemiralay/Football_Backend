@@ -88,5 +88,17 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpGet("getnationalteamDetailbyNationalTeamId")]
+        public IActionResult GetNationalTeamByNationalTeamId(int nationalTeamId)
+        {
+            var result = _nationalService.GetNationalTeamsDetailByNationalTeamId(nationalTeamId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
     }
 }
