@@ -14,7 +14,6 @@ namespace Entities.Concrete
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
         public int CityId { get; set; }
-        public int? TransferHistoryId { get; set; }
         public int? CareerStatId { get; set; }
         public int PositionId { get; set; }
         public int? OutfitterId { get; set; }

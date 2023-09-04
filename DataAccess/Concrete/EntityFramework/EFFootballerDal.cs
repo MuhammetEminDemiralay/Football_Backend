@@ -55,7 +55,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  PositionId = position.Id,
                                  FootballerCountryName = country.CountryName,
                                  NatioanalTeamPlayerActive = footballer.NationalTeamPlayerActive,
-                                 NationalTeamLevel = footballer.NationalTeamLevel
+                                 NationalTeamLevel = footballer.NationalTeamLevel,
+                                 FootballerClubImagePath = (from img in context.ClubImages where img.ClubId == footballer.ClubId select img.ClubImagePath).FirstOrDefault()
                              };
 
 
@@ -126,7 +127,11 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.CountryId equals country.Id
                              join city in context.Citys
                              on footballer.CityId equals city.Id
-
+                             join clubImage in context.ClubImages
+                             on footballer.ClubId equals clubImage.ClubId
+                             join club in context.Clubs
+                             on footballer.ClubId equals club.Id
+                             
 
 
                              select new FootballerDetailDto
@@ -149,8 +154,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  CityId = city.Id,
                                  FootId = foot.Id,
                                  PositionId = position.Id,
-                                 CityName = city.CityName
-
+                                 CityName = city.CityName,
+                                 ClubName = club.ClubName,
+                                 FootballerClubImagePath = clubImage.ClubImagePath
+                                 
+                                 
                              };
 
                 return result.Where(filter).FirstOrDefault();
