@@ -156,7 +156,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  PositionId = position.Id,
                                  CityName = city.CityName,
                                  ClubName = club.ClubName,
-                                 FootballerClubImagePath = clubImage.ClubImagePath
+                                 FootballerClubImagePath = clubImage.ClubImagePath,
+                                 NatioanalTeamPlayerActive = footballer.NationalTeamPlayerActive,
+                                 NationalTeamLevel = footballer.NationalTeamLevel
                                  
                                  
                              };
