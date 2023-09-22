@@ -1,6 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependencyResolvers.Autofac;
+using Microsoft.AspNetCore.Diagnostics;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,12 +25,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseStaticFiles();
 

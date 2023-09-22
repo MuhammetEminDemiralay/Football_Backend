@@ -12,7 +12,6 @@ namespace Business.ValidationRules.FluentValidation
     {
         public CityValidator()
         {
-            //RuleFor(p => p.CityName).MinimumLength(3);
         }
     }
 }

@@ -15,8 +15,6 @@ namespace Entities.Concrete
         public string ClubName { get; set; }
         public int SquadSize { get; set; }
         public int AverageAge { get; set; }
-        public int NationalTeamPlayers { get; set; }
-        public int Foreigners { get; set; }
         public string StadiumName { get; set; }
         public int StadiumCapacity { get; set; }
         public int CurrentTransferRecord { get; set; }

@@ -31,7 +31,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = league.Id,
                                  CountryId = league.CountryId,
                                  Date = leagueImage.Date,
-                                 LeagueImagePath = leagueImage.LeagueImagePath,
+                                 LeagueImagePath = (from image in context.LeagueImages where image.LeagueId == league.Id select image.LeagueImagePath).FirstOrDefault(),
                                  LeagueLevel = league.LeagueLevel,
                                  LeagueName = league.LeagueName,
                                  NumberOfTeams = league.NumberOfTeams,

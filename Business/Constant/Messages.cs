@@ -72,5 +72,7 @@ namespace Business.Constant
 
         public static string GetByCountryId = "Get leagues by country ıd";
         public static string GetByClubsLeagueId = "Get clubs by league ıd";
+
+        public static string AlreadyLeagueName = "League name already exist";
     }
 }

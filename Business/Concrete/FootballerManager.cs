@@ -48,7 +48,7 @@ namespace Business.Concrete
 
         public IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam, int nationalTeamLevel)
         {
-            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByCountryId(p => p.CountryId == countryId && p.NatioanalTeamPlayerActive == nationalTeam && p.NationalTeamLevel == nationalTeamLevel));
+            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByCountryId(p => p.CountryId == countryId && p.NationalTeamPlayerActive == nationalTeam && p.NationalTeamLevel == nationalTeamLevel));
         }
 
         public IDataResult<FootballerDetailDto> GetFootballerDetailByFootballerId(int footballerId)

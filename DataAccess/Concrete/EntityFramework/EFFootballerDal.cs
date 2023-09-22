@@ -54,7 +54,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  FootId = foot.Id,
                                  PositionId = position.Id,
                                  FootballerCountryName = country.CountryName,
-                                 NatioanalTeamPlayerActive = footballer.NationalTeamPlayerActive,
+                                 NationalTeamPlayerActive = footballer.NationalTeamPlayerActive,
                                  NationalTeamLevel = footballer.NationalTeamLevel,
                                  FootballerClubImagePath = (from img in context.ClubImages where img.ClubId == footballer.ClubId select img.ClubImagePath).FirstOrDefault()
                              };
@@ -157,7 +157,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CityName = city.CityName,
                                  ClubName = club.ClubName,
                                  FootballerClubImagePath = clubImage.ClubImagePath,
-                                 NatioanalTeamPlayerActive = footballer.NationalTeamPlayerActive,
+                                 NationalTeamPlayerActive = footballer.NationalTeamPlayerActive,
                                  NationalTeamLevel = footballer.NationalTeamLevel
                                  
                                  
