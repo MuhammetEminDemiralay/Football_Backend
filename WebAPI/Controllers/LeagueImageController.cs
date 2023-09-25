@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _leagueImageService.GetAll();
+            var result = await _leagueImageService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getLeagueImagesByLeagueId")]
-        public IActionResult GetImageByCountryId(int leagueId)
+        public async Task<IActionResult> GetImageByCountryIdAsync(int leagueId)
         {
-            var result = _leagueImageService.GetLeagueImageByLeagueId(leagueId);
+            var result = await _leagueImageService.GetLeagueImageByLeagueIdAsync(leagueId);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile[] files, [FromForm] LeagueImage leagueImage)
+        public async Task<IActionResult> AddAsync([FromForm] IFormFile[] files, [FromForm] LeagueImage leagueImage)
         {
-            var result = _leagueImageService.AddCollective(files, leagueImage);
+            var result = await _leagueImageService.AddCollectiveAsync(files, leagueImage);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(LeagueImage leagueImage)
+        public async Task<IActionResult> DeleteAsync(LeagueImage leagueImage)
         {
-            var result = _leagueImageService.Delete(leagueImage);
+            var result = await _leagueImageService.DeleteAsync(leagueImage);
             if (result.Success)
             {
                 return Ok(result);

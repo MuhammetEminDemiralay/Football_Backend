@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Entities.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EFNationalTeamDal : EFEntityRepositoryBase<NationalTeam, FootballContext>, INationalTeamDal
     {
-        public List<NationalTeamDetailDto> GetNationalTeamDetailByCountryId(Expression<Func<NationalTeamDetailDto, bool>> filter = null)
+        public async Task<List<NationalTeamDetailDto>> GetNationalTeamDetailByCountryIdAsync(Expression<Func<NationalTeamDetailDto, bool>> filter = null)
         {
             using (var context = new FootballContext())
             {
@@ -35,12 +36,12 @@ namespace DataAccess.Concrete.EntityFramework
                                  MarketValue = nationalTeam.MarketValue
                              };
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
+                return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
 
             }
         }
 
-        public NationalTeamDetailDto GetNationalTeamDetailByNationalTeamId(Expression<Func<NationalTeamDetailDto, bool>> filter)
+        public async Task<NationalTeamDetailDto> GetNationalTeamDetailByNationalTeamIdAsync(Expression<Func<NationalTeamDetailDto, bool>> filter)
         {
             using (var context = new FootballContext())
             {
@@ -61,7 +62,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  MarketValue = nationalTeam.MarketValue
                              };
 
-                return result.Where(filter).FirstOrDefault();
+                return await result.Where(filter).SingleOrDefaultAsync();
             }
         }
     }

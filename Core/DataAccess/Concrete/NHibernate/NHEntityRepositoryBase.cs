@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess.Abstract;
 using Core.Entities.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,43 +20,43 @@ namespace Core.DataAccess.Concrete.NHibernate
             _nhibernateHelper = nhibernateHelper;
         }
 
-        public void Add(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
             using (var session = _nhibernateHelper.OpenSession())
             {
-                session.Save(entity);
+                await session.SaveAsync(entity);
             }
         }
 
-        public void Delete(TEntity entity)
+        public async Task DeleteAsync(TEntity entity)
         {
             using (var session = _nhibernateHelper.OpenSession())
             {
-                session.Delete(entity);
+                await session.DeleteAsync(entity);
             }
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
             using (var session = _nhibernateHelper.OpenSession())
             {
-                return session.Query<TEntity>().SingleOrDefault(filter);
+                return await session.Query<TEntity>().SingleOrDefaultAsync(filter);
             }
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var session = _nhibernateHelper.OpenSession())
             {
-                return filter == null ? session.Query<TEntity>().ToList() : session.Query<TEntity>().Where(filter).ToList();
+                return await (filter == null ? session.Query<TEntity>().ToListAsync() : session.Query<TEntity>().Where(filter).ToListAsync());
             }
         }
 
-        public void Update(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
             using(var session = _nhibernateHelper.OpenSession())
             {
-                session.Update(entity);
+               await session.UpdateAsync(entity);
             }
         }
     }

@@ -10,11 +10,11 @@ namespace Business.Abstract
 {
     public interface ICityService
     {
-        IDataResult<List<City>> GetAll();
-        IDataResult<City> Get(int id);
-        IResult Add(City city);
-        IResult Update(City city);
-        IResult Delete(City city);
-        IDataResult<List<City>> GetCityByCountryId(int countryId);
+        Task<IDataResult<List<City>>> GetAllAsync();
+        Task<IDataResult<City>> GetAsync(int id);
+        Task<IResult> AddAsync(City city);
+        Task<IResult> UpdateAsync(City city);
+        Task<IResult> DeleteAsync(City city);
+        Task<IDataResult<List<City>>> GetCityByCountryIdAsync(int countryId);
     }
 }

@@ -10,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IFootService
     {
-        IDataResult<List<Foot>> GetAll();
-        IDataResult<Foot> Get(int id);
-        IResult Add(Foot foot);
-        IResult Update(Foot foot);
-        IResult Delete(Foot foot);
+        Task<IDataResult<List<Foot>>> GetAllAsync();
+        Task<IDataResult<Foot>> GetAsync(int id);
+        Task<IResult> AddAsync(Foot foot);
+        Task<IResult> UpdateAsync(Foot foot);
+        Task<IResult> DeleteAsync(Foot foot);
     }
 }

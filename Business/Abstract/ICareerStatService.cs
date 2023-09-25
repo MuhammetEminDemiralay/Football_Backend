@@ -10,10 +10,10 @@ namespace Business.Abstract
 {
     public interface ICareerStatService
     {
-        IDataResult<List<CareerStat>> GetAll();
-        IDataResult<CareerStat> Get(int id);
-        IResult Add(CareerStat careerStat);
-        IResult Update(CareerStat careerStat);
-        IResult Delete(CareerStat careerStat);
+        Task<IDataResult<List<CareerStat>>> GetAllAsync();
+        Task<IDataResult<CareerStat>> GetAsync(int id);
+        Task<IResult> AddAsync(CareerStat careerStat);
+        Task<IResult> UpdateAsync(CareerStat careerStat);
+        Task<IResult> DeleteAsync(CareerStat careerStat);
     }
 }

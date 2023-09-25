@@ -20,31 +20,31 @@ namespace Business.Concrete
             _continentDal = continentDal;
         }
 
-        public IResult Add(Continent continent)
+        public async Task<IResult> AddAsync(Continent continent)
         {
-            _continentDal.Add(continent);
+            await _continentDal.AddAsync(continent);
             return new SuccessResult(Messages.ContinentAdd);
         }
 
-        public IResult Delete(Continent continent)
+        public async Task<IResult> DeleteAsync(Continent continent)
         {
-            _continentDal.Delete(continent);
+            await _continentDal.DeleteAsync(continent);
             return new SuccessResult(Messages.ContinentDelete);
         }
 
-        public IDataResult<Continent> Get(int id)
+        public async Task<IDataResult<Continent>> GetAsync(int id)
         {
-            return new SuccessDataResult<Continent>(_continentDal.Get(p => p.Id == id), Messages.ContinentGet);
+            return new SuccessDataResult<Continent>(await _continentDal.GetAsync(p => p.Id == id), Messages.ContinentGet);
         }
 
-        public IDataResult<List<Continent>> GetAll()
+        public async Task<IDataResult<List<Continent>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<Continent>>(_continentDal.GetAll(), Messages.ContinentList);
+            return new SuccessDataResult<List<Continent>>(await _continentDal.GetAllAsync(), Messages.ContinentList);
         }
 
-        public IResult Update(Continent continent)
+        public async Task<IResult> UpdateAsync(Continent continent)
         {
-            _continentDal.Update(continent);
+            await _continentDal.DeleteAsync(continent);
             return new SuccessResult(Messages.ContinentUpdate);
         }
     }

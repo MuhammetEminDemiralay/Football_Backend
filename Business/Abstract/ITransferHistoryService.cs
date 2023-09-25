@@ -11,11 +11,11 @@ namespace Business.Abstract
 {
     public interface ITransferHistoryService
     {
-        IDataResult<List<TransferHistory>> GetAll();
-        IDataResult<List<TransferHistoryDto>> GetTransferHistoryByFootballerId(int footballerId);
-        IDataResult<TransferHistory> Get(int id);
-        IResult Add(TransferHistory transferHistory);
-        IResult Update(TransferHistory transferHistory);
-        IResult Delete(TransferHistory transferHistory);
+        Task<IDataResult<List<TransferHistory>>> GetAllAsync();
+        Task<IDataResult<List<TransferHistoryDto>>> GetTransferHistoryByFootballerIdAsync(int footballerId);
+        Task<IDataResult<TransferHistory>> GetAsync(int id);
+        Task<IResult> AddAsync(TransferHistory transferHistory);
+        Task<IResult> UpdateAsync(TransferHistory transferHistory);
+        Task<IResult> DeleteAsync(TransferHistory transferHistory);
     }
 }

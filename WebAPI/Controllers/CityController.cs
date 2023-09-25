@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _cityService.GetAll();
+            var result = await _cityService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _cityService.Get(id);
+            var result = await _cityService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,21 +41,21 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(City city)
+        public async Task<IActionResult> AddAsync(City city)
         {
-            var result = _cityService.Add(city);
+            var result = await _cityService.AddAsync(city);
             if (result.Success)
             {
                 return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpPost("update")]
-        public IActionResult Update(City city)
+        public async Task<IActionResult> UpdateAsync(City city)
         {
-            var result = _cityService.Update(city);
+            var result = await _cityService.UpdateAsync(city);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(City city)
+        public async Task<IActionResult> DeleteAsync(City city)
         {
-            var result = _cityService.Delete(city);
+            var result = await _cityService.DeleteAsync(city);
             if (result.Success)
             {
                 return Ok(result);
@@ -77,9 +77,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getCityByCountryId")]
-        public IActionResult GetCityByCountryıd(int countryId)
+        public async Task<IActionResult> GetCityByCountryıdAsync(int countryId)
         {
-            var result = _cityService.GetCityByCountryId(countryId);
+            var result = await _cityService.GetCityByCountryIdAsync(countryId);
             if (result.Success)
             {
                 return Ok(result);

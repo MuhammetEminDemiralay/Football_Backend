@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _careerStatService.GetAll();
+            var result = await _careerStatService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _careerStatService.Get(id);
+            var result = await _careerStatService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(CareerStat careerStat)
+        public async Task<IActionResult> AddAsync(CareerStat careerStat)
         {
-            var result = _careerStatService.Add(careerStat);
+            var result = await _careerStatService.AddAsync(careerStat);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(CareerStat careerStat)
+        public async Task<IActionResult> UpdateAsync(CareerStat careerStat)
         {
-            var result = _careerStatService.Update(careerStat);
+            var result = await _careerStatService.UpdateAsync(careerStat);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(CareerStat careerStat)
+        public async Task<IActionResult> DeleteAsync(CareerStat careerStat)
         {
-            var result = _careerStatService.Delete(careerStat);
+            var result = await _careerStatService.DeleteAsync(careerStat);
             if (result.Success)
             {
                 return Ok(result);

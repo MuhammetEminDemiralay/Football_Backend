@@ -20,31 +20,31 @@ namespace Business.Concrete
             _positionDal = positionDal;
         }
 
-        public IResult Add(Position position)
+        public async Task<IResult> AddAsync(Position position)
         {
-            _positionDal.Add(position);
+            await _positionDal.AddAsync(position);
             return new SuccessResult(Messages.PositonAdd);
         }
 
-        public IResult Delete(Position position)
+        public async Task<IResult> DeleteAsync(Position position)
         {
-            _positionDal.Delete(position);
+            await _positionDal.DeleteAsync(position);
             return new SuccessResult(Messages.PositionDelete);
         }
 
-        public IDataResult<Position> Get(int id)
+        public async Task<IDataResult<Position>> GetAsync(int id)
         {
-            return new SuccessDataResult<Position>(_positionDal.Get(p => p.Id == id), Messages.PositionGet);
+            return new SuccessDataResult<Position>(await _positionDal.GetAsync(p => p.Id == id), Messages.PositionGet);
         }
 
-        public IDataResult<List<Position>> GetAll()
+        public async Task<IDataResult<List<Position>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<Position>>(_positionDal.GetAll(), Messages.PositionList);
+            return new SuccessDataResult<List<Position>>(await _positionDal.GetAllAsync(), Messages.PositionList);
         }
 
-        public IResult Update(Position position)
+        public async Task<IResult> UpdateAsync(Position position)
         {
-            _positionDal.Update(position);
+            await _positionDal.UpdateAsync(position);
             return new SuccessResult(Messages.PositionUpdate);
         }
     }

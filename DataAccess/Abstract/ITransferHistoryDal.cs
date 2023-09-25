@@ -12,6 +12,6 @@ namespace DataAccess.Abstract
 {
     public interface ITransferHistoryDal : IEntityRepository<TransferHistory>
     {
-        List<TransferHistoryDto> GetFootballerTransferHistory(Expression<Func<TransferHistoryDto, bool>> filter = null);
+        Task<List<TransferHistoryDto>> GetFootballerTransferHistoryAsync(Expression<Func<TransferHistoryDto, bool>> filter = null);
     }
 }

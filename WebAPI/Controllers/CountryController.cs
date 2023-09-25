@@ -18,9 +18,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _countryService.GetAll();
+            var result = await _countryService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -30,9 +30,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _countryService.Get(id);
+            var result = await _countryService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -42,9 +42,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Country country)
+        public async Task<IActionResult> AddAsync(Country country)
         {
-            var result = _countryService.Add(country);
+            var result = await _countryService.AddAsync(country);
             if (result.Success)
             {
                 return Ok(result);
@@ -54,9 +54,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Country country)
+        public async Task<IActionResult> UpdateAsync(Country country)
         {
-            var result = _countryService.Update(country);
+            var result = await _countryService.UpdateAsync(country);
             if (result.Success)
             {
                 return Ok(result);
@@ -66,9 +66,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Country country)
+        public async Task<IActionResult> DeleteAsync(Country country)
         {
-            var result = _countryService.Delete(country);
+            var result = await _countryService.DeleteAsync(country);
             if (result.Success)
             {
                 return Ok(result);

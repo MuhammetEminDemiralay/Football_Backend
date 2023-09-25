@@ -10,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IPositionService
     {
-        IDataResult<List<Position>> GetAll();
-        IDataResult<Position> Get(int id);
-        IResult Add(Position position);
-        IResult Update(Position position);
-        IResult Delete(Position position);
+        Task<IDataResult<List<Position>>> GetAllAsync();
+        Task<IDataResult<Position>> GetAsync(int id);
+        Task<IResult> AddAsync(Position position);
+        Task<IResult> UpdateAsync(Position position);
+        Task<IResult> DeleteAsync(Position position);
     }
 }

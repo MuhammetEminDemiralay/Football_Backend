@@ -24,51 +24,51 @@ namespace Business.Concrete
             _footballerDal = footballerDal;
         }
 
-        public IResult Add(Footballer footballer)
+        public async Task<IResult> AddAsync(Footballer footballer)
         {
-            _footballerDal.Add(footballer);
+            await _footballerDal.AddAsync(footballer);
             return new SuccessResult(Messages.FootballerAdd);
         }
 
-        public IResult Delete(Footballer footballer)
+        public async Task<IResult> DeleteAsync(Footballer footballer)
         {
-            _footballerDal.Delete(footballer);
+            await _footballerDal.DeleteAsync(footballer);
             return new SuccessResult(Messages.FootballerDelete);
         }
 
-        public IDataResult<Footballer> Get(int id)
+        public async Task<IDataResult<Footballer>> GetAsync(int id)
         {
-            return new SuccessDataResult<Footballer>(_footballerDal.Get(p => p.Id == id), Messages.FootballerGet);
+            return new SuccessDataResult<Footballer>(await _footballerDal.GetAsync(p => p.Id == id), Messages.FootballerGet);
         }
 
-        public IDataResult<List<Footballer>> GetAll()
+        public async Task<IDataResult<List<Footballer>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(), Messages.FootballerList);
+            return new SuccessDataResult<List<Footballer>>(await _footballerDal.GetAllAsync(), Messages.FootballerList);
         }
 
-        public IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam, int nationalTeamLevel)
+        public async Task<IDataResult<List<FootballerDetailDto>>> GetFootballerDetailByCountryIdAsync(int countryId, bool nationalTeam, int nationalTeamLevel)
         {
-            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByCountryId(p => p.CountryId == countryId && p.NationalTeamPlayerActive == nationalTeam && p.NationalTeamLevel == nationalTeamLevel));
+            return new SuccessDataResult<List<FootballerDetailDto>>(await _footballerDal.GetFootballersDetailByCountryIdAsync(p => p.CountryId == countryId && p.NationalTeamPlayerActive == nationalTeam && p.NationalTeamLevel == nationalTeamLevel));
         }
 
-        public IDataResult<FootballerDetailDto> GetFootballerDetailByFootballerId(int footballerId)
+        public async Task<IDataResult<FootballerDetailDto>> GetFootballerDetailByFootballerIdAsync(int footballerId)
         {
-            return new SuccessDataResult<FootballerDetailDto>(_footballerDal.GetFootballerDetailByFootballerId(p => p.Id == footballerId), "Futbolcu ıd sine göre futbolcu detayları getirildi");
+            return new SuccessDataResult<FootballerDetailDto>(await _footballerDal.GetFootballerDetailByFootballerIdAsync(p => p.Id == footballerId), "Futbolcu ıd sine göre futbolcu detayları getirildi");
         }
 
-        public IDataResult<List<Footballer>> GetFootballersByClubId(int clubId)
+        public async Task<IDataResult<List<Footballer>>> GetFootballersByClubIdAsync(int clubId)
         {
-            return new SuccessDataResult<List<Footballer>>(_footballerDal.GetAll(p => p.ClubId == clubId));
+            return new SuccessDataResult<List<Footballer>>(await _footballerDal.GetAllAsync(p => p.ClubId == clubId));
         }
 
-        public IDataResult<List<FootballerDetailDto>> GetFootballersDetailByClubId(int clubId)
+        public async Task<IDataResult<List<FootballerDetailDto>>> GetFootballersDetailByClubIdAsync(int clubId)
         {
-            return new SuccessDataResult<List<FootballerDetailDto>>(_footballerDal.GetFootballersDetailByClubId(p => p.ClubId == clubId), "Club ıd ye göre futbolcuların detayları getirilidi");
+            return new SuccessDataResult<List<FootballerDetailDto>>(await _footballerDal.GetFootballersDetailByClubIdAsync(p => p.ClubId == clubId), "Club ıd ye göre futbolcuların detayları getirilidi");
         }
 
-        public IResult Update(Footballer footballer)
+        public async Task<IResult> UpdateAsync(Footballer footballer)
         {
-            _footballerDal.Update(footballer);
+            await _footballerDal.UpdateAsync(footballer);
             return new SuccessResult(Messages.FootballerUpdate);
         }
     }

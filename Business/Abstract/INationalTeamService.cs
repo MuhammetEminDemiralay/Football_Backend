@@ -11,14 +11,14 @@ namespace Business.Abstract
 {
     public interface INationalTeamService
     {
-        IDataResult<List<NationalTeam>> GetAll();
-        IDataResult<NationalTeam> Get(int id);
-        IResult Add(NationalTeam nationalTeam);
-        IResult Update(NationalTeam nationalTeam);
-        IResult Delete(NationalTeam nationalTeam);
+        Task<IDataResult<List<NationalTeam>>> GetAllAsync();
+        Task<IDataResult<NationalTeam>> GetAsync(int id);
+        Task<IResult> AddAsync(NationalTeam nationalTeam);
+        Task<IResult> UpdateAsync(NationalTeam nationalTeam);
+        Task<IResult> DeleteAsync(NationalTeam nationalTeam);
 
-        IDataResult<List<NationalTeamDetailDto>> GetNationalTeamsDetailByCountryId(int countryId);
-        IDataResult<NationalTeamDetailDto> GetNationalTeamsDetailByNationalTeamId(int nationalTeamId);
+        Task<IDataResult<List<NationalTeamDetailDto>>> GetNationalTeamsDetailByCountryIdAsync(int countryId);
+        Task<IDataResult<NationalTeamDetailDto>> GetNationalTeamsDetailByNationalTeamIdAsync(int nationalTeamId);
 
     }
 }

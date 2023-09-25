@@ -22,41 +22,41 @@ namespace Business.Concrete
             _clubImageDal = clubImageDal;
         }
 
-        public IResult Add(IFormFile file, ClubImage clubImage)
+        public async Task<IResult> AddAsync(IFormFile file, ClubImage clubImage)
         {
             clubImage.ClubImagePath = FileHelper.Add(file);
             clubImage.Date = DateTime.Now;
-            _clubImageDal.Add(clubImage);
+            await _clubImageDal.AddAsync(clubImage);
             return new SuccessResult("Club image added");
         }
 
-        public IResult AddCollective(IFormFile[] files, ClubImage clubImage)
+        public async Task<IResult> AddCollectiveAsync(IFormFile[] files, ClubImage clubImage)
         {
             foreach (var file in files)
             {
                 clubImage = new ClubImage { ClubId = clubImage.ClubId};
-                Add(file, clubImage);
+                await AddAsync(file, clubImage);
             }
             return new SuccessResult("Oldu");
         }
 
-        public IResult Delete(ClubImage clubImage)
+        public async Task<IResult> DeleteAsync(ClubImage clubImage)
         {
-            _clubImageDal.Delete(clubImage);
+            await _clubImageDal.DeleteAsync(clubImage);
             return new SuccessResult("Club ımage deleted");
         }
 
-        public IDataResult<List<ClubImage>> GetAll()
+        public async Task<IDataResult<List<ClubImage>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<ClubImage>>(_clubImageDal.GetAll(), "Club image listed");
+            return new SuccessDataResult<List<ClubImage>>(await _clubImageDal.GetAllAsync(), "Club image listed");
         }
 
-        public IDataResult<ClubImage> GetImageByClubId(int clubId)
+        public async Task<IDataResult<ClubImage>> GetImageByClubIdAsync(int clubId)
         {
-            return new SuccessDataResult<ClubImage>(_clubImageDal.Get(p => p.Id == clubId), "Club ımage by club ıd get");
+            return new SuccessDataResult<ClubImage>(await _clubImageDal.GetAsync(p => p.Id == clubId), "Club ımage by club ıd get");
         }
 
-        public IResult Update(IFormFile file, ClubImage clubImage)
+        public async Task<IResult> UpdateAsync(IFormFile file, ClubImage clubImage)
         {
             throw new NotImplementedException();
         }

@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _footService.GetAll();
+            var result = await _footService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _footService.Get(id);
+            var result = await _footService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Foot foot)
+        public async Task<IActionResult> AddAsync(Foot foot)
         {
-            var result = _footService.Add(foot);
+            var result = await _footService.AddAsync(foot);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Foot foot)
+        public async Task<IActionResult> UpdateAsync(Foot foot)
         {
-            var result = _footService.Update(foot);
+            var result = await _footService.UpdateAsync(foot);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Foot foot)
+        public async Task<IActionResult> DeleteAsync(Foot foot)
         {
-            var result = _footService.Delete(foot);
+            var result = await _footService.DeleteAsync(foot);
             if (result.Success)
             {
                 return Ok(result);

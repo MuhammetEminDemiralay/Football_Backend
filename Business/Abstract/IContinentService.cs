@@ -10,10 +10,10 @@ namespace Business.Abstract
 {
     public interface IContinentService
     {
-        IDataResult<List<Continent>> GetAll();
-        IDataResult<Continent> Get(int id);
-        IResult Add(Continent continent);
-        IResult Update(Continent continent);
-        IResult Delete(Continent continent);
+        Task<IDataResult<List<Continent>>> GetAllAsync();
+        Task<IDataResult<Continent>> GetAsync(int id);
+        Task<IResult> AddAsync(Continent continent);
+        Task<IResult> UpdateAsync(Continent continent);
+        Task<IResult> DeleteAsync(Continent continent);
     }
 }

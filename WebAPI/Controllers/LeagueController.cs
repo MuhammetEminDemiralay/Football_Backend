@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _leagueService.GetAll();
+            var result = await _leagueService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         //[HttpGet("get")]
-        //public IActionResult Get(int id)
+        //public async Task<IActionResult> GetAsync(int id)
         //{
-        //    var result = _leagueService.Get(id);
+        //    var result = await _leagueService.GetAsync(id);
         //    if (result.Success)
         //    {
         //        return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         //}
 
         [HttpPost("add")]
-        public IActionResult Add(League league)
+        public async Task<IActionResult> AddAsync(League league)
         {
-            var result = _leagueService.Add(league);
+            var result = await _leagueService.AddAsync(league);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(League league)
+        public async Task<IActionResult> UpdateAsync(League league)
         {
-            var result = _leagueService.Update(league);
+            var result = await _leagueService.UpdateAsync(league);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(League league)
+        public async Task<IActionResult> DeleteAsync(League league)
         {
-            var result = _leagueService.Delete(league);
+            var result = await _leagueService.DeleteAsync(league);
             if (result.Success)
             {
                 return Ok(result);
@@ -77,9 +77,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getLeaguesDetailbyCountryId")]
-        public IActionResult GetLeaguesbyCountryId(int countryId)
+        public async Task<IActionResult> GetLeaguesbyCountryIdAsync(int countryId)
         {
-            var result = _leagueService.GetLeaguesbyCountryId(countryId);
+            var result = await _leagueService.GetLeaguesbyCountryIdAsync(countryId);
             if (result.Success)
             {
                 return Ok(result);
@@ -90,9 +90,9 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("getLeagueDetailByLeagueId")]
-        public IActionResult GetLegaueDetailByLeagueId(int leagueId)
+        public async Task<IActionResult> GetLegaueDetailByLeagueIdAsync(int leagueId)
         {
-            var result = _leagueService.GetLegaueDetailByLeagueId(leagueId);
+            var result = await _leagueService.GetLegaueDetailByLeagueIdAsync(leagueId);
             if (result.Success)
             {
                 return Ok(result);

@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _footballerService.GetAll();
+            var result = await _footballerService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _footballerService.Get(id);
+            var result = await _footballerService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Footballer footballer)
+        public async Task<IActionResult> AddAsync(Footballer footballer)
         {
-            var result = _footballerService.Add(footballer);
+            var result = await _footballerService.AddAsync(footballer);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Footballer footballer)
+        public async Task<IActionResult> UpdateAsync(Footballer footballer)
         {
-            var result = _footballerService.Update(footballer);
+            var result = await _footballerService.UpdateAsync(footballer);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Footballer footballer)
+        public async Task<IActionResult> DeleteAsync(Footballer footballer)
         {
-            var result = _footballerService.Delete(footballer);
+            var result = await _footballerService.DeleteAsync(footballer);
             if (result.Success)
             {
                 return Ok(result);
@@ -77,9 +77,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getFootballersByClubId")]
-        public IActionResult GetFootballersByClubId(int clubId)
+        public async Task<IActionResult> GetFootballersByClubIdAsync(int clubId)
         {
-            var result = _footballerService.GetFootballersByClubId(clubId);
+            var result = await _footballerService.GetFootballersByClubIdAsync(clubId);
             if (result.Success)
             {
                 return Ok(result);
@@ -89,9 +89,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getFootballersDetailByClubId")]
-        public IActionResult GetFootballersDetailByClubId(int clubId)
+        public async Task<IActionResult> GetFootballersDetailByClubIdAsync(int clubId)
         {
-            var result = _footballerService.GetFootballersDetailByClubId(clubId);
+            var result = await _footballerService.GetFootballersDetailByClubIdAsync(clubId);
             if (result.Success)
             {
                 return Ok(result);
@@ -101,9 +101,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getFootballerDetailByFootballerId")]
-        public IActionResult GetFootballerDetailByFootballerId(int footballerId)
+        public async Task<IActionResult> GetFootballerDetailByFootballerIdAsync(int footballerId)
         {
-            var result = _footballerService.GetFootballerDetailByFootballerId(footballerId);
+            var result = await _footballerService.GetFootballerDetailByFootballerIdAsync(footballerId);
             if (result.Success)
             {
                 return Ok(result);
@@ -113,9 +113,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getFootballerDetailByNationalTeam")]
-        public IActionResult GetFootballerDetailByNationalTeam(int countryId, bool nationalTeam, int nationalTeamLevel)
+        public async Task<IActionResult> GetFootballerDetailByNationalTeamAsync(int countryId, bool nationalTeam, int nationalTeamLevel)
         {
-            var result = _footballerService.GetFootballerDetailByCountryId(countryId, nationalTeam, nationalTeamLevel);
+            var result = await _footballerService.GetFootballerDetailByCountryIdAsync(countryId, nationalTeam, nationalTeamLevel);
             if (result.Success)
             {
                 return Ok(result);

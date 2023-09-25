@@ -22,43 +22,43 @@ namespace Business.Concrete
             _footballerImageDal = footballerImageDal;
         }
 
-        public IResult Add(IFormFile file, FootballerImage footballerImage)
+        public async Task<IResult> AddAsync(IFormFile file, FootballerImage footballerImage)
         {
             footballerImage.FootballerImagePath = FileHelper.Add(file);
             footballerImage.Date = DateTime.Now;
-            _footballerImageDal.Add(footballerImage);
+            await _footballerImageDal.AddAsync(footballerImage);
             return new SuccessResult("Footballer image added");
         }
 
-        public IResult AddCollective(IFormFile[] files, FootballerImage footballerImage)
+        public async Task<IResult> AddCollectiveAsync(IFormFile[] files, FootballerImage footballerImage)
         {
             foreach (var file in files)
             {
                 footballerImage = new FootballerImage{ FootballerId = footballerImage.FootballerId };
-                Add(file, footballerImage);
+                await AddAsync(file, footballerImage);
             }
             return new SuccessResult("Oldu");
         }
 
-        public IResult Delete(FootballerImage footballerImage)
+        public async Task<IResult> DeleteAsync(FootballerImage footballerImage)
         {
-            _footballerImageDal.Delete(footballerImage);
+            await _footballerImageDal.DeleteAsync(footballerImage);
             return new SuccessResult("Footballer ımage delete");
         }
 
-        public IDataResult<List<FootballerImage>> GetAll()
+        public async Task<IDataResult<List<FootballerImage>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<FootballerImage>>(_footballerImageDal.GetAll(), "Footballer image listed");
+            return new SuccessDataResult<List<FootballerImage>>(await _footballerImageDal.GetAllAsync(), "Footballer image listed");
 
         }
 
-        public IDataResult<FootballerImage> GetFootballerImageByFootballerId(int footballerId)
+        public async Task<IDataResult<FootballerImage>> GetFootballerImageByFootballerIdAsync(int footballerId)
         {
-            return new SuccessDataResult<FootballerImage>(_footballerImageDal.Get(p => p.Id == footballerId), "Futbolcu ıd'ye göre futbolcu resmi getirildi");
+            return new SuccessDataResult<FootballerImage>(await _footballerImageDal.GetAsync(p => p.Id == footballerId), "Futbolcu ıd'ye göre futbolcu resmi getirildi");
 
         }
 
-        public IResult Update(IFormFile file, FootballerImage footballerImage)
+        public async Task<IResult> UpdateAsync(IFormFile file, FootballerImage footballerImage)
         {
             throw new NotImplementedException();
         }

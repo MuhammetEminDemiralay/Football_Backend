@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Entities.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EFTransferHistoryDal : EFEntityRepositoryBase<TransferHistory, FootballContext>, ITransferHistoryDal
     {
-        public List<TransferHistoryDto> GetFootballerTransferHistory(Expression<Func<TransferHistoryDto, bool>> filter = null)
+        public async Task<List<TransferHistoryDto>> GetFootballerTransferHistoryAsync(Expression<Func<TransferHistoryDto, bool>> filter = null)
         {
             using (var context = new FootballContext())
             {
@@ -43,7 +44,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Season = transferHistory.Season
                             };
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
+                return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
 
             }
         }

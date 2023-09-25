@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _positionService.GetAll();
+            var result = await _positionService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _positionService.Get(id);
+            var result = await _positionService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Position positon)
+        public async Task<IActionResult> AddAsync(Position positon)
         {
-            var result = _positionService.Add(positon);
+            var result = await _positionService.AddAsync(positon);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Position positon)
+        public async Task<IActionResult> UpdateAsync(Position positon)
         {
-            var result = _positionService.Update(positon);
+            var result = await _positionService.UpdateAsync(positon);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Position positon)
+        public async Task<IActionResult> DeleteAsync(Position positon)
         {
-            var result = _positionService.Delete(positon);
+            var result = await _positionService.DeleteAsync(positon);
             if (result.Success)
             {
                 return Ok(result);

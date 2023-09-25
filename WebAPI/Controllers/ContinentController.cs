@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _continentService.GetAll();
+            var result = await _continentService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _continentService.Get(id);
+            var result = await _continentService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Continent continent)
+        public async Task<IActionResult> AddAsync(Continent continent)
         {
-            var result = _continentService.Add(continent);
+            var result = await _continentService.AddAsync(continent);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(Continent continent)
+        public async Task<IActionResult> UpdateAsync(Continent continent)
         {
-            var result = _continentService.Update(continent);
+            var result = await _continentService.UpdateAsync(continent);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(Continent continent)
+        public async Task<IActionResult> DeleteAsync(Continent continent)
         {
-            var result = _continentService.Delete(continent);
+            var result = await _continentService.DeleteAsync(continent);
             if (result.Success)
             {
                 return Ok(result);

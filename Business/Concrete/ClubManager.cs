@@ -21,41 +21,41 @@ namespace Business.Concrete
             _clubDal = clubDal;
         }
 
-        public IResult Add(Club club)
+        public async Task<IResult> AddAsync(Club club)
         {
-            _clubDal.Add(club);
+            await _clubDal.AddAsync(club);
             return new SuccessResult(Messages.ClubAdd);
         }
 
-        public IResult Delete(Club club)
+        public async Task<IResult> DeleteAsync(Club club)
         {
-            _clubDal.Delete(club);
+            await _clubDal.DeleteAsync(club);
             return new SuccessResult(Messages.ClubDelete);
         }
 
-        public IDataResult<Club> Get(int id)
+        public async Task<IDataResult<Club>> GetAsync(int id)
         {
-            return new SuccessDataResult<Club>(_clubDal.Get(p => p.Id == id), Messages.ClubGet);
+            return new SuccessDataResult<Club>(await _clubDal.GetAsync(p => p.Id == id), Messages.ClubGet);
         }
 
-        public IDataResult<List<Club>> GetAll()
+        public async Task<IDataResult<List<Club>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<Club>>(_clubDal.GetAll(), Messages.ClubList);
+            return new SuccessDataResult<List<Club>>(await _clubDal.GetAllAsync(), Messages.ClubList);
         }
 
-        public IDataResult<ClubDetailDto> GetClubDetailByClubId(int clubId)
+        public async Task<IDataResult<ClubDetailDto>> GetClubDetailByClubIdAsync(int clubId)
         {
-            return new SuccessDataResult<ClubDetailDto>(_clubDal.GetClubDetailByClubId(p => p.Id == clubId),"Club ıd ye göre club detayları getirildi");
+            return new SuccessDataResult<ClubDetailDto>(await _clubDal.GetClubDetailByClubIdAsync(p => p.Id == clubId),"Club ıd ye göre club detayları getirildi");
         }
 
-        public IDataResult<List<ClubDetailDto>> GetClubsDetailByLeagueId(int leagueId)
+        public async Task<IDataResult<List<ClubDetailDto>>> GetClubsDetailByLeagueIdAsync(int leagueId)
         {
-            return new SuccessDataResult<List<ClubDetailDto>>(_clubDal.GetClubDetailDto(p => p.LeagueId == leagueId), Messages.GetByClubsLeagueId);
+            return new SuccessDataResult<List<ClubDetailDto>>(await _clubDal.GetClubDetailAsync(p => p.LeagueId == leagueId), Messages.GetByClubsLeagueId);
         }
 
-        public IResult Update(Club club)
+        public async Task<IResult> UpdateAsync(Club club)
         {
-            _clubDal.Update(club);
+            await _clubDal.UpdateAsync(club);
             return new SuccessResult(Messages.ClubUpdate);
         }
     }

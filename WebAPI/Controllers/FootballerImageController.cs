@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _footballerImageService.GetAll();
+            var result = await _footballerImageService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getFootballerImageByFootballerId")]
-        public IActionResult GetFootballerImageByFootballerId(int footballerId)
+        public async Task<IActionResult> GetFootballerImageByFootballerIdAsync(int footballerId)
         {
-            var result = _footballerImageService.GetFootballerImageByFootballerId(footballerId);
+            var result = await _footballerImageService.GetFootballerImageByFootballerIdAsync(footballerId);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile[] files, [FromForm] FootballerImage footballerImage)
+        public async Task<IActionResult> AddAsync([FromForm] IFormFile[] files, [FromForm] FootballerImage footballerImage)
         {
-            var result = _footballerImageService.AddCollective(files, footballerImage);
+            var result = await _footballerImageService.AddCollectiveAsync(files, footballerImage);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(FootballerImage footballerImage)
+        public async Task<IActionResult> DeleteAsync(FootballerImage footballerImage)
         {
-            var result = _footballerImageService.Delete(footballerImage);
+            var result = await _footballerImageService.DeleteAsync(footballerImage);
             if (result.Success)
             {
                 return Ok(result);

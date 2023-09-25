@@ -22,41 +22,41 @@ namespace Business.Concrete
             _leagueImageDal = leagueImageDal;
         }
 
-        public IResult Add(IFormFile file, LeagueImage leagueImage)
+        public async Task<IResult> AddAsync(IFormFile file, LeagueImage leagueImage)
         {
             leagueImage.LeagueImagePath= FileHelper.Add(file);
             leagueImage.Date = DateTime.Now;
-            _leagueImageDal.Add(leagueImage);
+            await _leagueImageDal.AddAsync(leagueImage);
             return new SuccessResult("Laegue image added");
         }
 
-        public IResult AddCollective(IFormFile[] files, LeagueImage leagueImage)
+        public async Task<IResult> AddCollectiveAsync(IFormFile[] files, LeagueImage leagueImage)
         {
             foreach (var file in files)
             {
                 leagueImage = new LeagueImage { LeagueId = leagueImage.LeagueId};
-                Add(file, leagueImage);
+                await AddAsync(file, leagueImage);
             }
             return new SuccessResult("Oldu");
         }
 
-        public IResult Delete(LeagueImage leagueImage)
+        public async Task<IResult> DeleteAsync(LeagueImage leagueImage)
         {
-            _leagueImageDal.Delete(leagueImage);
+            await _leagueImageDal.DeleteAsync(leagueImage);
             return new SuccessResult("league ımage delete");
         }
 
-        public IDataResult<List<LeagueImage>> GetAll()
+        public async Task<IDataResult<List<LeagueImage>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<LeagueImage>>(_leagueImageDal.GetAll(), "League image listed");
+            return new SuccessDataResult<List<LeagueImage>>(await _leagueImageDal.GetAllAsync(), "League image listed");
         }
 
-        public IDataResult<LeagueImage> GetLeagueImageByLeagueId(int leagueId)
+        public async Task<IDataResult<LeagueImage>> GetLeagueImageByLeagueIdAsync(int leagueId)
         {
-            return new SuccessDataResult<LeagueImage>(_leagueImageDal.Get(p => p.Id == leagueId), "Lig ıd'ye göre lig logosu getirildi");
+            return new SuccessDataResult<LeagueImage>(await _leagueImageDal.GetAsync(p => p.Id == leagueId), "Lig ıd'ye göre lig logosu getirildi");
         }
 
-        public IResult Update(IFormFile file, LeagueImage leagueImage)
+        public async Task<IResult> UpdateAsync(IFormFile file, LeagueImage leagueImage)
         {
             throw new NotImplementedException();
         }

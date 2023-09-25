@@ -20,31 +20,31 @@ namespace Business.Concrete
             _footDal = footDal;
         }
 
-        public IResult Add(Foot foot)
+        public async Task<IResult> AddAsync(Foot foot)
         {
-            _footDal.Add(foot);
+            await _footDal.AddAsync(foot);
             return new SuccessResult();
         }
 
-        public IResult Delete(Foot foot)
+        public async Task<IResult> DeleteAsync(Foot foot)
         {
-            _footDal.Delete(foot);
+            await _footDal.DeleteAsync(foot);
             return new SuccessResult();
         }
 
-        public IDataResult<Foot> Get(int id)
+        public async Task<IDataResult<Foot>> GetAsync(int id)
         {
-            return new SuccessDataResult<Foot>(_footDal.Get(p => p.Id == id));
+            return new SuccessDataResult<Foot>(await _footDal.GetAsync(p => p.Id == id));
         }
 
-        public IDataResult<List<Foot>> GetAll()
+        public async Task<IDataResult<List<Foot>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<Foot>>(_footDal.GetAll());
+            return new SuccessDataResult<List<Foot>>(await _footDal.GetAllAsync());
         }
 
-        public IResult Update(Foot foot)
+        public async Task<IResult> UpdateAsync(Foot foot)
         {
-            _footDal.Update(foot);
+            await _footDal.UpdateAsync(foot);
             return new SuccessResult();
         }
     }

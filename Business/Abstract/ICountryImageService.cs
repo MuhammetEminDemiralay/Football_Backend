@@ -11,11 +11,11 @@ namespace Business.Abstract
 {
     public interface ICountryImageService 
     {
-        IDataResult<List<CountryImage>> GetAll();
-        IDataResult<CountryImage> GetImageByCountryId(int countryId);
-        IResult Add(IFormFile file, CountryImage carImage);
-        IResult AddCollective(IFormFile[] files, CountryImage carImage);
-        IResult Update(IFormFile file, CountryImage carImage);
-        IResult Delete(CountryImage carImage);
+        Task<IDataResult<List<CountryImage>>> GetAllAsync();
+        Task<IDataResult<CountryImage>> GetImageByCountryIdAsync(int countryId);
+        Task<IResult> AddAsync(IFormFile file, CountryImage carImage);
+        Task<IResult> AddCollectiveAsync(IFormFile[] files, CountryImage carImage);
+        Task<IResult> UpdateAsync(IFormFile file, CountryImage carImage);
+        Task<IResult> DeleteAsync(CountryImage carImage);
     }
 }

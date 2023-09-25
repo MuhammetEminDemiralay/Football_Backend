@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _countryImageService.GetAll();
+            var result = await _countryImageService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getImageByCountryId")]
-        public IActionResult GetImageByCountryId(int countryId)
+        public async Task<IActionResult> GetImageByCountryIdAsync(int countryId)
         {
-            var result = _countryImageService.GetImageByCountryId(countryId);
+            var result = await _countryImageService.GetImageByCountryIdAsync(countryId);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile[] files, [FromForm] CountryImage countryImage)
+        public async Task<IActionResult> AddAsync([FromForm] IFormFile[] files, [FromForm] CountryImage countryImage)
         {
-            var result = _countryImageService.AddCollective(files, countryImage);
+            var result = await _countryImageService.AddCollectiveAsync(files, countryImage);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(CountryImage countryImage)
+        public async Task<IActionResult> DeleteAsync(CountryImage countryImage)
         {
-            var result = _countryImageService.Delete(countryImage);
+            var result = await _countryImageService.DeleteAsync(countryImage);
             if (result.Success)
             {
                 return Ok(result);

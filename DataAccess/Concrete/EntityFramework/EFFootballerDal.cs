@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Entities.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -17,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
     public class EFFootballerDal : EFEntityRepositoryBase<Footballer, FootballContext>, IFootballerDal
     {
 
-        public List<FootballerDetailDto> GetFootballersDetailByCountryId(Expression<Func<FootballerDetailDto, bool>> filter = null)
+        public async Task<List<FootballerDetailDto>> GetFootballersDetailByCountryIdAsync(Expression<Func<FootballerDetailDto, bool>> filter = null)
         {
             using (var context = new FootballContext())
             {
@@ -60,13 +61,13 @@ namespace DataAccess.Concrete.EntityFramework
                              };
 
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
+                return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
 
             }
         }
 
 
-        public List<FootballerDetailDto> GetFootballersDetailByClubId(Expression<Func<FootballerDetailDto, bool>> filter = null)
+        public async Task<List<FootballerDetailDto>> GetFootballersDetailByClubIdAsync(Expression<Func<FootballerDetailDto, bool>> filter = null)
         {
             using(var context = new FootballContext())
             {
@@ -107,12 +108,12 @@ namespace DataAccess.Concrete.EntityFramework
                              };
 
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
+                return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
 
             }
         }
 
-        public FootballerDetailDto GetFootballerDetailByFootballerId(Expression<Func<FootballerDetailDto, bool>> filter)
+        public async Task<FootballerDetailDto> GetFootballerDetailByFootballerIdAsync(Expression<Func<FootballerDetailDto, bool>> filter)
         {
             using (var context = new FootballContext())
             {
@@ -163,7 +164,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  
                              };
 
-                return result.Where(filter).FirstOrDefault();
+                return await result.Where(filter).SingleOrDefaultAsync();
 
             }
         }

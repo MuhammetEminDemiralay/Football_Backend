@@ -11,11 +11,11 @@ namespace Business.Abstract
 {
     public interface ILeagueImageService
     {
-        IDataResult<List<LeagueImage>> GetAll();
-        IDataResult<LeagueImage> GetLeagueImageByLeagueId(int leagueId);
-        IResult Add(IFormFile file, LeagueImage leagueImage);
-        IResult AddCollective(IFormFile[] files, LeagueImage leagueImage);
-        IResult Update(IFormFile file, LeagueImage leagueImage);
-        IResult Delete(LeagueImage leagueImage);
+        Task<IDataResult<List<LeagueImage>>> GetAllAsync();
+        Task<IDataResult<LeagueImage>> GetLeagueImageByLeagueIdAsync(int leagueId);
+        Task<IResult> AddAsync(IFormFile file, LeagueImage leagueImage);
+        Task<IResult> AddCollectiveAsync(IFormFile[] files, LeagueImage leagueImage);
+        Task<IResult> UpdateAsync(IFormFile file, LeagueImage leagueImage);
+        Task<IResult> DeleteAsync(LeagueImage leagueImage);
     }
 }

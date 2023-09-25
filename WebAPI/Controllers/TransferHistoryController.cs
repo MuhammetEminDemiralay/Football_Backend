@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _transferHistoryService.GetAll();
+            var result = await _transferHistoryService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _transferHistoryService.Get(id);
+            var result = await _transferHistoryService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(TransferHistory transferHistory)
+        public async Task<IActionResult> AddAsync(TransferHistory transferHistory)
         {
-            var result = _transferHistoryService.Add(transferHistory);
+            var result = await _transferHistoryService.AddAsync(transferHistory);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(TransferHistory transferHistory)
+        public async Task<IActionResult> UpdateAsync(TransferHistory transferHistory)
         {
-            var result = _transferHistoryService.Update(transferHistory);
+            var result = await _transferHistoryService.UpdateAsync(transferHistory);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(TransferHistory transferHistory)
+        public async Task<IActionResult> DeleteAsync(TransferHistory transferHistory)
         {
-            var result = _transferHistoryService.Delete(transferHistory);
+            var result = await _transferHistoryService.DeleteAsync(transferHistory);
             if (result.Success)
             {
                 return Ok(result);
@@ -78,9 +78,9 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("gettransferhistorybyfootballerıd")]
-        public IActionResult GetTransferHistoryByFootballerId(int footbalerId)
+        public async Task<IActionResult> GetTransferHistoryByFootballerIdAsync(int footbalerId)
         {
-            var result = _transferHistoryService.GetTransferHistoryByFootballerId(footbalerId);
+            var result = await _transferHistoryService.GetTransferHistoryByFootballerIdAsync(footbalerId);
             if (result.Success)
             {
                 return Ok(result);

@@ -20,31 +20,31 @@ namespace Business.Concrete
             _careerStatDal = careerStatDal;
         }
 
-        public IResult Add(CareerStat careerStat)
+        public async Task<IResult> AddAsync(CareerStat careerStat)
         {
-            _careerStatDal.Add(careerStat);
+            await _careerStatDal.AddAsync(careerStat);
             return new SuccessResult(Messages.CareerStatAdded);
         }
 
-        public IResult Delete(CareerStat careerStat)
+        public async Task<IResult> DeleteAsync(CareerStat careerStat)
         {
-            _careerStatDal.Delete(careerStat);
+            await _careerStatDal.DeleteAsync(careerStat);
             return new SuccessResult(Messages.CareerStatDelete);
         }
 
-        public IDataResult<CareerStat> Get(int id)
+        public async  Task<IDataResult<CareerStat>> GetAsync(int id)
         {
-            return new SuccessDataResult<CareerStat>(_careerStatDal.Get(p => p.Id == id), Messages.CareerStatGet);
+            return new SuccessDataResult<CareerStat>(await _careerStatDal.GetAsync(p => p.Id == id), Messages.CareerStatGet);
         }
 
-        public IDataResult<List<CareerStat>> GetAll()
+        public async Task<IDataResult<List<CareerStat>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<CareerStat>>(_careerStatDal.GetAll(), Messages.CareerStatListed);
+            return new SuccessDataResult<List<CareerStat>>(await _careerStatDal.GetAllAsync(), Messages.CareerStatListed);
         }
 
-        public IResult Update(CareerStat careerStat)
+        public async Task<IResult> UpdateAsync(CareerStat careerStat)
         {
-            _careerStatDal.Update(careerStat);
+            await _careerStatDal.UpdateAsync(careerStat);
             return new SuccessResult(Messages.CareerStatUpdate);
         }
     }

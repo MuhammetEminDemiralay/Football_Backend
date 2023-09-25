@@ -21,41 +21,41 @@ namespace Business.Concrete
             _countryImageDal = countryImageDal;
         }
 
-        public IResult Add(IFormFile file, CountryImage countryImage)
+        public async Task<IResult> AddAsync(IFormFile file, CountryImage countryImage)
         {
             countryImage.CountryImagePath= FileHelper.Add(file);
             countryImage.Date = DateTime.Now;
-            _countryImageDal.Add(countryImage);
+            await _countryImageDal.AddAsync(countryImage);
             return new SuccessResult("Country image added");
         }
 
-        public IResult AddCollective(IFormFile[] files, CountryImage countryImage)
+        public async Task<IResult> AddCollectiveAsync(IFormFile[] files, CountryImage countryImage)
         {
             foreach (var file in files)
             {
                 countryImage= new CountryImage{ CountryId = countryImage.CountryId};
-                Add(file, countryImage);
+                await AddAsync(file, countryImage);
             }
             return new SuccessResult("Oldu");
         }
 
-        public IResult Delete(CountryImage countryImage)
+        public async Task<IResult> DeleteAsync(CountryImage countryImage)
         {
-            _countryImageDal.Delete(countryImage);
+            await _countryImageDal.AddAsync(countryImage);
             return new SuccessResult("Country image delete");
         }
 
-        public IDataResult<List<CountryImage>> GetAll()
+        public async Task<IDataResult<List<CountryImage>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<CountryImage>>(_countryImageDal.GetAll(), "Country images listed");
+            return new SuccessDataResult<List<CountryImage>>(await _countryImageDal.GetAllAsync(), "Country images listed");
         }
 
-        public IDataResult<CountryImage> GetImageByCountryId(int countryId)
+        public async Task<IDataResult<CountryImage>> GetImageByCountryIdAsync(int countryId)
         {
-            return new SuccessDataResult<CountryImage>(_countryImageDal.Get(p => p.CountryId == countryId));
+            return new SuccessDataResult<CountryImage>(await _countryImageDal.GetAsync(p => p.CountryId == countryId));
         }
 
-        public IResult Update(IFormFile file, CountryImage carImage)
+        public async Task<IResult> UpdateAsync(IFormFile file, CountryImage carImage)
         {
             throw new NotImplementedException();
         }

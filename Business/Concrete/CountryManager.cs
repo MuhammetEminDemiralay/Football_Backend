@@ -20,31 +20,31 @@ namespace Business.Concrete
             _countryDal = countryDal;
         }
 
-        public IResult Add(Country country)
+        public async Task<IResult> AddAsync(Country country)
         {
-            _countryDal.Add(country);
+            await _countryDal.AddAsync(country);
             return new SuccessResult(Messages.CountryAdd);
         }
 
-        public IResult Delete(Country country)
+        public async Task<IResult> DeleteAsync(Country country)
         {
-            _countryDal.Delete(country);
+            await _countryDal.DeleteAsync(country);
             return new SuccessResult(Messages.CountryDelete);
         }
 
-        public IDataResult<Country> Get(int id)
+        public async Task<IDataResult<Country>> GetAsync(int id)
         {
-            return new SuccessDataResult<Country>(_countryDal.Get(p => p.Id == id), Messages.CountryGet);
+            return new SuccessDataResult<Country>(await _countryDal.GetAsync(p => p.Id == id), Messages.CountryGet);
         }
 
-        public IDataResult<List<Country>> GetAll()
+        public async Task<IDataResult<List<Country>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<Country>>(_countryDal.GetAll(), Messages.CountryList);
+            return new SuccessDataResult<List<Country>>(await _countryDal.GetAllAsync(), Messages.CountryList);
         }
 
-        public IResult Update(Country country)
+        public async Task<IResult> UpdateAsync(Country country)
         {
-            _countryDal.Update(country);
+            await _countryDal.UpdateAsync(country);
             return new SuccessResult(Messages.CountryUpdate);
         }
     }

@@ -3,6 +3,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Entities.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
 
 
-        public List<LeagueDetailDto> GetLeagueDetailDtos(Expression<Func<LeagueDetailDto, bool>> filter = null)
+        public async Task<List<LeagueDetailDto>> GetLeagueDetailDtosAsync(Expression<Func<LeagueDetailDto, bool>> filter = null)
         {
             using(var context = new FootballContext())
             {
@@ -40,11 +41,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  TotalMarketValue = league.TotalMarketValue,
                              };
 
-                return filter == null ? result.ToList() : result.Where(filter).ToList();
+                return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
             }
         }
 
-        public LeagueDetailDto GetLeagueDetailByLeagueId(Expression<Func<LeagueDetailDto, bool>> filter)
+        public async Task<LeagueDetailDto> GetLeagueDetailByLeagueIdAsync(Expression<Func<LeagueDetailDto, bool>> filter)
         {
             using (var context = new FootballContext())
             {
@@ -72,7 +73,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  CountryName = country.CountryName
                              };
 
-                return result.Where(filter).FirstOrDefault();
+                return await result.Where(filter).SingleOrDefaultAsync();
 
             }
         }

@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 namespace Business.Abstract
 {
     public interface IFootballerService
-    {
-        IDataResult<List<Footballer>> GetAll();
-        IDataResult<Footballer> Get(int id);
-        IResult Add(Footballer footballer);
-        IResult Update(Footballer footballer);
-        IResult Delete(Footballer footballer);
+    { 
+        Task<IDataResult<List<Footballer>>> GetAllAsync();
+        Task<IDataResult<Footballer>> GetAsync(int id);
+        Task<IResult> AddAsync(Footballer footballer);
+        Task<IResult> UpdateAsync(Footballer footballer);
+        Task<IResult> DeleteAsync(Footballer footballer);
 
-        IDataResult<List<Footballer>> GetFootballersByClubId(int clubId);
-        IDataResult<List<FootballerDetailDto>> GetFootballersDetailByClubId(int clubId);
-        IDataResult<FootballerDetailDto> GetFootballerDetailByFootballerId(int footballerId);
-        IDataResult<List<FootballerDetailDto>> GetFootballerDetailByCountryId(int countryId, bool nationalTeam, int nationalTeamLevel);
+        Task<IDataResult<List<Footballer>>> GetFootballersByClubIdAsync(int clubId);
+        Task<IDataResult<List<FootballerDetailDto>>> GetFootballersDetailByClubIdAsync(int clubId);
+        Task<IDataResult<FootballerDetailDto>> GetFootballerDetailByFootballerIdAsync(int footballerId);
+        Task<IDataResult<List<FootballerDetailDto>>> GetFootballerDetailByCountryIdAsync(int countryId, bool nationalTeam, int nationalTeamLevel);
     }
 }

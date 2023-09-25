@@ -11,15 +11,15 @@ namespace Business.Abstract
 {
     public interface IClubService
     {
-        IDataResult<List<Club>> GetAll();
-        IDataResult<Club> Get(int id);
-        IDataResult<ClubDetailDto> GetClubDetailByClubId(int clubId);
-        IResult Add(Club club);
-        IResult Update(Club club);
-        IResult Delete(Club club);
+        Task<IDataResult<List<Club>>> GetAllAsync();
+        Task<IDataResult<Club>> GetAsync(int id);
+        Task<IDataResult<ClubDetailDto>> GetClubDetailByClubIdAsync(int clubId);
+        Task<IResult> AddAsync(Club club);
+        Task<IResult> UpdateAsync(Club club);
+        Task<IResult> DeleteAsync(Club club);
 
 
-        IDataResult<List<ClubDetailDto>> GetClubsDetailByLeagueId(int leagueId);
+        Task<IDataResult<List<ClubDetailDto>>> GetClubsDetailByLeagueIdAsync(int leagueId);
 
     }
 }

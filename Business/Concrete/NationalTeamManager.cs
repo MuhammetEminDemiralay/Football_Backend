@@ -21,41 +21,41 @@ namespace Business.Concrete
             _nationalTeamDal = nationalTeamDal;
         }
 
-        public IResult Add(NationalTeam nationalTeam)
+        public async Task<IResult> AddAsync(NationalTeam nationalTeam)
         {
-            _nationalTeamDal.Add(nationalTeam);
+            await _nationalTeamDal.AddAsync(nationalTeam);
             return new SuccessResult(Messages.NaitonalTeamAdd);
         }
 
-        public IResult Delete(NationalTeam nationalTeam)
+        public async Task<IResult> DeleteAsync(NationalTeam nationalTeam)
         {
-            _nationalTeamDal.Delete(nationalTeam);
+            await _nationalTeamDal.DeleteAsync(nationalTeam);
             return new SuccessResult(Messages.NationalTeamDelete);
         }
 
-        public IDataResult<NationalTeam> Get(int id)
+        public async Task<IDataResult<NationalTeam>> GetAsync(int id)
         {
-            return new SuccessDataResult<NationalTeam>(_nationalTeamDal.Get(p => p.Id == id), Messages.NationalTeamGet);
+            return new SuccessDataResult<NationalTeam>(await _nationalTeamDal.GetAsync(p => p.Id == id), Messages.NationalTeamGet);
         }
 
-        public IDataResult<List<NationalTeam>> GetAll()
+        public async Task<IDataResult<List<NationalTeam>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<NationalTeam>>(_nationalTeamDal.GetAll(), Messages.NationalTeamList);
+            return new SuccessDataResult<List<NationalTeam>>(await _nationalTeamDal.GetAllAsync(), Messages.NationalTeamList);
         }
 
-        public IDataResult<List<NationalTeamDetailDto>> GetNationalTeamsDetailByCountryId(int countryId)
+        public async Task<IDataResult<List<NationalTeamDetailDto>>> GetNationalTeamsDetailByCountryIdAsync(int countryId)
         {
-            return new SuccessDataResult<List<NationalTeamDetailDto>>(_nationalTeamDal.GetNationalTeamDetailByCountryId(p => p.CountryId == countryId), "National team detail listed....");
+            return new SuccessDataResult<List<NationalTeamDetailDto>>(await _nationalTeamDal.GetNationalTeamDetailByCountryIdAsync(p => p.CountryId == countryId), "National team detail listed....");
         }
 
-        public IDataResult<NationalTeamDetailDto> GetNationalTeamsDetailByNationalTeamId(int nationalTeamId)
+        public async Task<IDataResult<NationalTeamDetailDto>> GetNationalTeamsDetailByNationalTeamIdAsync(int nationalTeamId)
         {
-            return new SuccessDataResult<NationalTeamDetailDto>(_nationalTeamDal.GetNationalTeamDetailByNationalTeamId(p => p.Id == nationalTeamId));
+            return new SuccessDataResult<NationalTeamDetailDto>(await _nationalTeamDal.GetNationalTeamDetailByNationalTeamIdAsync(p => p.Id == nationalTeamId));
         }
 
-        public IResult Update(NationalTeam nationalTeam)
+        public async Task<IResult> UpdateAsync(NationalTeam nationalTeam)
         {
-            _nationalTeamDal.Update(nationalTeam);
+            await _nationalTeamDal.UpdateAsync(nationalTeam);
             return new SuccessResult(Messages.NationalTeamUpdate);
         }
     }

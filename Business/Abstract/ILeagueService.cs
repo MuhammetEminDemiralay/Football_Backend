@@ -12,11 +12,11 @@ namespace Business.Abstract
 {
     public interface ILeagueService
     {
-        IDataResult<List<League>> GetAll();
-        IDataResult<LeagueDetailDto> GetLegaueDetailByLeagueId(int leagueId);
-        IResult Add(League league);
-        IResult Update(League league);
-        IResult Delete(League league);
-        IDataResult<List<LeagueDetailDto>> GetLeaguesbyCountryId(int countryId);
+        Task<IDataResult<List<League>>> GetAllAsync();
+        Task<IDataResult<LeagueDetailDto>> GetLegaueDetailByLeagueIdAsync(int leagueId);
+        Task<IResult> AddAsync(League league);
+        Task<IResult> UpdateAsync(League league);
+        Task<IResult> DeleteAsync(League league);
+        Task<IDataResult<List<LeagueDetailDto>>> GetLeaguesbyCountryIdAsync(int countryId);
     }
 }

@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _clubImageService.GetAll();
+            var result = await _clubImageService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getLeagueImagesByLeagueId")]
-        public IActionResult GetImageByLeagueId(int clubId)
+        public async Task<IActionResult> GetImageByLeagueIdAsync(int clubId)
         {
-            var result = _clubImageService.GetImageByClubId(clubId);
+            var result = await _clubImageService.GetImageByClubIdAsync(clubId);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile[] files, [FromForm] ClubImage clubImage)
+        public async Task<IActionResult> AddAsync([FromForm] IFormFile[] files, [FromForm] ClubImage clubImage)
         {
-            var result = _clubImageService.AddCollective(files, clubImage);
+            var result = await _clubImageService.AddCollectiveAsync(files, clubImage);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(ClubImage clubImage)
+        public async Task<IActionResult> DeleteAsync(ClubImage clubImage)
         {
-            var result = _clubImageService.Delete(clubImage);
+            var result = await _clubImageService.DeleteAsync(clubImage);
             if (result.Success)
             {
                 return Ok(result);

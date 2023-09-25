@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = _nationalService.GetAll();
+            var result = await _nationalService.GetAllAsync();
             if (result.Success)
             {
                 return Ok(result);
@@ -29,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var result = _nationalService.Get(id);
+            var result = await _nationalService.GetAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(NationalTeam nationalTeam)
+        public async Task<IActionResult> AddAsync(NationalTeam nationalTeam)
         {
-            var result = _nationalService.Add(nationalTeam);
+            var result = await _nationalService.AddAsync(nationalTeam);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,9 +53,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(NationalTeam nationalTeam)
+        public async Task<IActionResult> UpdateAsync(NationalTeam nationalTeam)
         {
-            var result = _nationalService.Update(nationalTeam);
+            var result = await _nationalService.UpdateAsync(nationalTeam);
             if (result.Success)
             {
                 return Ok(result);
@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(NationalTeam nationalTeam)
+        public async Task<IActionResult> DeleteAsync(NationalTeam nationalTeam)
         {
-            var result = _nationalService.Delete(nationalTeam);
+            var result = await _nationalService.DeleteAsync(nationalTeam);
             if (result.Success)
             {
                 return Ok(result);
@@ -78,9 +78,9 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("getnationalteamDetailbycountryıd")]
-        public IActionResult GetNationalTeamsByCountryId(int countryId)
+        public async Task<IActionResult> GetNationalTeamsByCountryIdAsync(int countryId)
         {
-            var result = _nationalService.GetNationalTeamsDetailByCountryId(countryId);
+            var result = await _nationalService.GetNationalTeamsDetailByCountryIdAsync(countryId);
             if (result.Success)
             {
                 return Ok(result);
@@ -90,9 +90,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getnationalteamDetailbyNationalTeamId")]
-        public IActionResult GetNationalTeamByNationalTeamId(int nationalTeamId)
+        public async Task<IActionResult> GetNationalTeamByNationalTeamIdAsync(int nationalTeamId)
         {
-            var result = _nationalService.GetNationalTeamsDetailByNationalTeamId(nationalTeamId);
+            var result = await _nationalService.GetNationalTeamsDetailByNationalTeamIdAsync(nationalTeamId);
             if (result.Success)
             {
                 return Ok(result);

@@ -22,65 +22,65 @@ namespace Business.Concrete
             _leagueDal = leagueDal;
         }
 
-        public IResult Add(League league)
+        public async Task<IResult> AddAsync(League league)
         {
-            IResult result = BusinessRules.Run(CheckIfLeagueNameExist(league.LeagueName));
-            if (result != null)
-            {
-                return result;
-            }
-            _leagueDal.Add(league);
+            //IResult result = BusinessRules.Run(CheckIfLeagueNameExist(league.LeagueName));
+            //if (result != null)
+            //{
+            //    return result;
+            //}
+            await _leagueDal.AddAsync(league);
             return new SuccessResult(Messages.LeagueaAdd);
         }
 
 
-        public IResult Delete(League league)
+        public async Task<IResult> DeleteAsync(League league)
         {
-            _leagueDal.Delete(league);
+            await _leagueDal.DeleteAsync(league);
             return new SuccessResult(Messages.LeagueDelete);
         }
 
-        public IDataResult<LeagueDetailDto> GetLegaueDetailByLeagueId(int leagueId)
+        public async Task<IDataResult<LeagueDetailDto>> GetLegaueDetailByLeagueIdAsync(int leagueId)
         {
-            return new SuccessDataResult<LeagueDetailDto>(_leagueDal.GetLeagueDetailByLeagueId(p => p.Id == leagueId), "lig ıd' ye göre lig detayları listelendi");
+            return new SuccessDataResult<LeagueDetailDto>(await _leagueDal.GetLeagueDetailByLeagueIdAsync(p => p.Id == leagueId), "lig ıd' ye göre lig detayları listelendi");
         }
 
-        public IDataResult<List<League>> GetAll()
+        public async Task<IDataResult<List<League>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<League>>(_leagueDal.GetAll(), Messages.LeagueList);
+            return new SuccessDataResult<List<League>>(await _leagueDal.GetAllAsync(), Messages.LeagueList);
         }
 
 
-        public IDataResult<List<LeagueDetailDto>> GetLeaguesbyCountryId(int countryId)
+        public async Task<IDataResult<List<LeagueDetailDto>>> GetLeaguesbyCountryIdAsync(int countryId)
         {
-            return new SuccessDataResult<List<LeagueDetailDto>>(_leagueDal.GetLeagueDetailDtos(p => p.CountryId == countryId), Messages.GetByCountryId);
+            return new SuccessDataResult<List<LeagueDetailDto>>(await _leagueDal.GetLeagueDetailDtosAsync(p => p.CountryId == countryId), Messages.GetByCountryId);
         }
 
-        public IResult Update(League league)
+        public async Task<IResult> UpdateAsync(League league)
         {
-            IResult result = BusinessRules.Run(CheckIfLeagueNameExist(league.LeagueName));
-            if(result != null)
-            {
-                return new ErrorResult(Messages.AlreadyLeagueName);
-            }
-            _leagueDal.Update(league);
+            //IResult result = BusinessRules.Run(CheckIfLeagueNameExist(league.LeagueName));
+            //if(result != null)
+            //{
+            //    return new ErrorResult(Messages.AlreadyLeagueName);
+            //}
+            await _leagueDal.UpdateAsync(league);
             return new SuccessResult(Messages.LeagueUpdate);
         }
 
 
 
         // Business Rules
-        private IResult CheckIfLeagueNameExist(string leagueName)
-        {
-            var result = _leagueDal.GetAll(p => p.LeagueName == leagueName).Any();
+        //private IResult CheckIfLeagueNameExist(string leagueName)
+        //{
+        //    var result = _leagueDal.GetAll(p => p.LeagueName == leagueName).Any();
 
-            if (result)
-            {
-                return new ErrorResult(Messages.AlreadyLeagueName);
-            }
+        //    if (result)
+        //    {
+        //        return new ErrorResult(Messages.AlreadyLeagueName);
+        //    }
 
-            return new SuccessResult();
-        }
+        //    return new SuccessResult();
+        //}
 
     }
 }

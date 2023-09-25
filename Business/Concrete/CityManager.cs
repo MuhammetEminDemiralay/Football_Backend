@@ -24,57 +24,57 @@ namespace Business.Concrete
         }
 
         [FluentValidationAspect(typeof(CityValidator))]
-        public IResult Add(City city)
+        public async Task<IResult> AddAsync(City city)
         {
-            var result = BusinessRules.Run(CheckIfCityNameExitst(city.CityName));
-            if(result != null)
-            {
-                return result;
-            }
+            //var result = BusinessRules.Run(CheckIfCityNameExitst(city.CityName));
+            //if(result != null)
+            //{
+            //    return result;
+            //}
 
-            _cityDal.Add(city);
+            await _cityDal.AddAsync(city);
             return new SuccessResult(Messages.CityAdd);
         }
 
-        public IResult Delete(City city)
+        public async Task<IResult> DeleteAsync(City city)
         {
-            _cityDal.Delete(city);
+            await _cityDal.DeleteAsync(city);
             return new SuccessResult(Messages.CityDelete);
         }
 
-        public IDataResult<City> Get(int id)
+        public async Task<IDataResult<City>> GetAsync(int id)
         {
-            return new SuccessDataResult<City>(_cityDal.Get(p => p.Id == id), Messages.CityGet);
+            return new SuccessDataResult<City>(await _cityDal.GetAsync(p => p.Id == id), Messages.CityGet);
         }
 
-        public IDataResult<List<City>> GetAll()
+        public async Task<IDataResult<List<City>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<City>>(_cityDal.GetAll(), Messages.CityList);
+            return new SuccessDataResult<List<City>>(await _cityDal.GetAllAsync(), Messages.CityList);
         }
 
-        public IDataResult<List<City>> GetCityByCountryId(int countryId)
+        public async Task<IDataResult<List<City>>> GetCityByCountryIdAsync(int countryId)
         {
-            return new SuccessDataResult<List<City>>(_cityDal.GetAll(p => p.CountryId == countryId), "Country ıd ye göre city ler listelendi");
+            return new SuccessDataResult<List<City>>(await _cityDal.GetAllAsync(p => p.CountryId == countryId), "Country ıd ye göre city ler listelendi");
         }
 
-        public IResult Update(City city)
+        public async Task<IResult> UpdateAsync(City city)
         {
-            _cityDal.Update(city);
+            await _cityDal.UpdateAsync(city);
             return new SuccessResult(Messages.CityUpdate);
         }
 
 
         // Business Rules
 
-        private IResult CheckIfCityNameExitst(string cityName)
-        {
-            var result = _cityDal.GetAll(p => p.CityName == cityName).Any();
-            if (result)
-            {
-                return new ErrorResult(Messages.AlreadyCityName);
-            }
-            return new SuccessResult();
-        }
+        //private async Task<IResult> CheckIfCityNameExitst(string cityName)
+        //{
+        //    var result =  _cityDal.GetAllAsync(p => p.CityName == cityName).AnyAsync();
+        //    if (result)
+        //    {
+        //        return new ErrorResult(Messages.AlreadyCityName);
+        //    }
+        //    return new SuccessResult();
+        //}
 
     }
 }

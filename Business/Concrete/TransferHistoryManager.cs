@@ -21,36 +21,36 @@ namespace Business.Concrete
             _transferHistoryDal = transferHistoryDal;
         }
 
-        public IResult Add(TransferHistory transferHistory)
+        public async Task<IResult> AddAsync(TransferHistory transferHistory)
         {
-            _transferHistoryDal.Add(transferHistory);
+            await _transferHistoryDal.AddAsync(transferHistory);
             return new SuccessResult(Messages.TransferHistoryAdd);
         }
 
-        public IResult Delete(TransferHistory transferHistory)
+        public async Task<IResult> DeleteAsync(TransferHistory transferHistory)
         {
-            _transferHistoryDal.Delete(transferHistory);
+            await _transferHistoryDal.DeleteAsync(transferHistory);
             return new SuccessResult(Messages.TransferHistoryDelete);
         }
 
-        public IDataResult<TransferHistory> Get(int id)
+        public async Task<IDataResult<TransferHistory>> GetAsync(int id)
         {
-            return new SuccessDataResult<TransferHistory>(_transferHistoryDal.Get(p => p.Id == id), Messages.TransferHistoryGet);
+            return new SuccessDataResult<TransferHistory>(await _transferHistoryDal.GetAsync(p => p.Id == id), Messages.TransferHistoryGet);
         }
 
-        public IDataResult<List<TransferHistory>> GetAll()
+        public async Task<IDataResult<List<TransferHistory>>> GetAllAsync()
         {
-            return new SuccessDataResult<List<TransferHistory>>(_transferHistoryDal.GetAll(), Messages.TransferHistoryList);
+            return new SuccessDataResult<List<TransferHistory>>(await _transferHistoryDal.GetAllAsync(), Messages.TransferHistoryList);
         }
 
-        public IDataResult<List<TransferHistoryDto>> GetTransferHistoryByFootballerId(int footballerId)
+        public async Task<IDataResult<List<TransferHistoryDto>>> GetTransferHistoryByFootballerIdAsync(int footballerId)
         {
-            return new SuccessDataResult<List<TransferHistoryDto>>(_transferHistoryDal.GetFootballerTransferHistory(p => p.FootballerId == footballerId), "Futbolcu ıd sine göre transfer geçmişi getirildi");
+            return new SuccessDataResult<List<TransferHistoryDto>>(await _transferHistoryDal.GetFootballerTransferHistoryAsync(p => p.FootballerId == footballerId), "Futbolcu ıd sine göre transfer geçmişi getirildi");
         }
 
-        public IResult Update(TransferHistory transferHistory)
+        public async Task<IResult> UpdateAsync(TransferHistory transferHistory)
         {
-            _transferHistoryDal.Update(transferHistory);
+            await _transferHistoryDal.UpdateAsync(transferHistory);
             return new SuccessResult(Messages.TransferHistoryUpdate);
         }
     }
