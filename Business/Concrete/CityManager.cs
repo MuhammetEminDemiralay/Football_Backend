@@ -2,6 +2,7 @@
 using Business.Constant;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect;
+using Core.CrossCuttingConcerns.Logging;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -17,10 +18,12 @@ namespace Business.Concrete
     public class CityManager : ICityService
     {
         ICityDal _cityDal;
+        ILoggerService _logger;
 
-        public CityManager(ICityDal cityDal)
+        public CityManager(ICityDal cityDal, ILoggerService logger)
         {
             _cityDal = cityDal;
+            _logger = logger;
         }
 
         [FluentValidationAspect(typeof(CityValidator))]
@@ -33,6 +36,7 @@ namespace Business.Concrete
             //}
 
             await _cityDal.AddAsync(city);
+            _logger.LogInfo($"Add {city.CityName} added");
             return new SuccessResult(Messages.CityAdd);
         }
 

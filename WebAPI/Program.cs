@@ -1,8 +1,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependencyResolvers.Autofac;
-using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
+using Core.Utilities.FilterAttribute;
+using Core.Extensions;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,13 +16,20 @@ builder.Host.ConfigureContainer<ContainerBuilder>(options =>
 });
 
 
+LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
+
+
 builder.Services.AddControllers();
 builder.Services.AddCors();
 
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.ConfigureLoggerService();
+
 
 var app = builder.Build();
 
