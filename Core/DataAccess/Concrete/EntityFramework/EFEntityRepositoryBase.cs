@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess.Abstract;
 using Core.Entities.Abstract;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -4,6 +4,8 @@ using Business.DependencyResolvers.Autofac;
 using Core.Utilities.FilterAttribute;
 using Core.Extensions;
 using NLog;
+using Core.CrossCuttingConcerns.Logging;
+using WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,8 @@ builder.Services.ConfigureLoggerService();
 
 var app = builder.Build();
 
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,6 +44,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 
 app.UseStaticFiles();

@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.Exceptions.Concrete;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +18,20 @@ namespace WebAPI.Controllers
             _cityService = cityService;
         }
 
+
+        [HttpGet("yakala")]
+        public async Task<IActionResult> GetYakala([FromQuery]CityParameters parameters)
+        {
+            var result =await _cityService.GetAllPaginationCity(parameters);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest();
+        }
+
+
         [HttpGet("getall")]
         public async Task<IActionResult> GetAllAsync()
         {
@@ -31,6 +47,7 @@ namespace WebAPI.Controllers
         [HttpGet("get")]
         public async Task<IActionResult> GetAsync(int id)
         {
+
             var result = await _cityService.GetAsync(id);
             if (result.Success)
             {
@@ -49,7 +66,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result);
+            return BadRequest();
         }
 
         [HttpPost("update")]

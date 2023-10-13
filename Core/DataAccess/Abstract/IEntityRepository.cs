@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Abstract;
 using Core.Utilities.Results;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;

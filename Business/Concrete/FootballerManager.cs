@@ -6,6 +6,7 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,6 +7,8 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Exceptions.Concrete;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +67,11 @@ namespace Business.Concrete
         {
             await _cityDal.UpdateAsync(city);
             return new SuccessResult(Messages.CityUpdate);
+        }
+
+        public async Task<IDataResult<List<City>>> GetAllPaginationCity(CityParameters parameters)
+        {
+            return new SuccessDataResult<List<City>>(await _cityDal.GetAllTryCity(parameters), "Merhaba");
         }
 
 

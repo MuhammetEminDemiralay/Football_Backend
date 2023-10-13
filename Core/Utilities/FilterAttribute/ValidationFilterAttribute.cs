@@ -15,7 +15,7 @@ namespace Core.Utilities.FilterAttribute
             var controller = context.RouteData.Values["controller"];
             var action = context.RouteData.Values["action"];
 
-            var param = context.ActionArguments.SingleOrDefault(p => p.Value.ToString().Contains("Get")).Value;
+            var param = context.ActionArguments.SingleOrDefault(p => p.Value.ToString().Contains("Async")).Value;
 
             if(param is null)
             {
