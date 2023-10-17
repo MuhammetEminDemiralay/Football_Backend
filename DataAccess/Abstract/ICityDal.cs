@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.Abstract;
+using Core.RequestFeatures;
 using Entities.Concrete;
 using Entities.Dtos;
 using Entities.RequestFeatures;
@@ -13,6 +14,6 @@ namespace DataAccess.Abstract
 {
     public interface ICityDal : IEntityRepository<City>
     {
-        Task<List<City>> GetAllTryCity(CityParameters parameters, Expression<Func<FootballerDetailDto, bool>> filter = null);
+        Task<PagedList<City>> GetAllTryCity(CityParameters parameters, Expression<Func<City, bool>> filter = null);
     }
 }

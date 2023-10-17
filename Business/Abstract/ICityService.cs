@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results;
+﻿using Core.RequestFeatures;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.RequestFeatures;
 using System;
@@ -11,7 +12,7 @@ namespace Business.Abstract
 {
     public interface ICityService
     {
-        Task<IDataResult<List<City>>> GetAllPaginationCity(CityParameters parameters);  // Pagination
+        Task<(IEnumerable<City> city, MetaData metaData)> GetAllPaginationCity(CityParameters parameters);  // Pagination
         Task<IDataResult<List<City>>> GetAllAsync();
         Task<IDataResult<City>> GetAsync(int id);
         Task<IResult> AddAsync(City city);

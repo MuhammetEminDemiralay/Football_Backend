@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.Concrete.EntityFramework;
+using Core.RequestFeatures;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
@@ -16,12 +17,14 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EFCityDal : EFEntityRepositoryBase<City, FootballContext>, ICityDal
     {
-        public async Task<List<City>> GetAllTryCity(CityParameters parameters, Expression<Func<FootballerDetailDto, bool>> filter = null)
+        public async Task<PagedList<City>> GetAllTryCity(CityParameters parameters, Expression<Func<City, bool>> filter = null)
         {
             using(var context = new FootballContext())
             {
+                var result = await (filter == null ? context.Set<City>().ToListAsync() : context.Set<City>().Where(filter).ToListAsync());
 
-                return await context.Set<City>().Skip((parameters.PageNumber - 1) * parameters.PageSize).Take(parameters.PageSize).ToListAsync();
+                return PagedList<City>.ToPagedList(result, parameters.PageNumber, parameters.PageSize);
+
             }
         }
     }

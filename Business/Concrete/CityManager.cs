@@ -3,6 +3,7 @@ using Business.Constant;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect;
 using Core.CrossCuttingConcerns.Logging;
+using Core.RequestFeatures;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -69,9 +70,10 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CityUpdate);
         }
 
-        public async Task<IDataResult<List<City>>> GetAllPaginationCity(CityParameters parameters)
+        public async Task<(IEnumerable<City> city, MetaData metaData)> GetAllPaginationCity(CityParameters parameters)
         {
-            return new SuccessDataResult<List<City>>(await _cityDal.GetAllTryCity(parameters), "Merhaba");
+            var result =  await _cityDal.GetAllTryCity(parameters);
+            return (result, result.MetaData);
         }
 
 

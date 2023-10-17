@@ -4,6 +4,7 @@ using Entities.Exceptions.Concrete;
 using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace WebAPI.Controllers
 {
@@ -22,10 +23,13 @@ namespace WebAPI.Controllers
         [HttpGet("yakala")]
         public async Task<IActionResult> GetYakala([FromQuery]CityParameters parameters)
         {
-            var result =await _cityService.GetAllPaginationCity(parameters);
-            if (result.Success)
+            var result = await _cityService.GetAllPaginationCity(parameters);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+
+            if (result.metaData.TotalCount > 0)
             {
-                return Ok(result);
+                return Ok(result.city);
             }
 
             return BadRequest();
