@@ -1,8 +1,11 @@
 ﻿using Core.DataAccess.Concrete.EntityFramework;
+using Core.RequestFeatures;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Entities.Dtos;
+using Entities.Extensions;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -165,6 +168,19 @@ namespace DataAccess.Concrete.EntityFramework
                              };
 
                 return await result.Where(filter).SingleOrDefaultAsync();
+
+            }
+
+
+        }
+
+        public async Task<PagedList<Footballer>> GetAllTryFootballer(FootballerParameters parameters, Expression<Func<Footballer, bool>> filter = null)
+        {
+            using (var context = new FootballContext())
+            {
+                var result = await(filter == null ? context.Set<Footballer>().Search(parameters.SearchTerm).ToListAsync() : context.Set<Footballer>().Where(filter).Search(parameters.SearchTerm).ToListAsync());
+
+                return PagedList<Footballer>.ToPagedList(result, parameters.PageNumber, parameters.PageSize);
 
             }
         }

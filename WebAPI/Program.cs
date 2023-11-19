@@ -33,6 +33,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureLoggerService();
 
 
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+
+
 var app = builder.Build();
 
 var logger = app.Services.GetRequiredService<ILoggerService>();
@@ -52,6 +57,8 @@ app.UseStaticFiles();
 app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace WebAPI.Controllers
 {
@@ -16,10 +18,25 @@ namespace WebAPI.Controllers
             _footballerService = footballerService;
         }
 
-        [HttpGet("getall")]
-        public async Task<IActionResult> GetAllAsync()
+        [HttpGet("yakala")]
+        public async Task<IActionResult> GetYakala([FromQuery] FootballerParameters parameters)
         {
-            var result = await _footballerService.GetAllAsync();
+            var result = await _footballerService.GetAllPaginationFootballer(parameters);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+
+            if (result.metaData.TotalCount > 0)
+            {
+                return Ok(result.footballer);
+            }
+
+            return BadRequest();
+        }
+
+        [HttpGet("getall")]
+        public async Task<IActionResult> GetAllAsync(int minAge, int maxAge)
+        {
+            var result = await _footballerService.GetAllAsync(minAge, maxAge);
             if (result.Success)
             {
                 return Ok(result);

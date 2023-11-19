@@ -18,5 +18,7 @@ namespace Entities.RequestFeatures
 			set { _pageSize = value > _maxPageSize ? _maxPageSize : value; }
 		}
 
-	}
+        public String? Fields { get; set; }
+
+    }
 }

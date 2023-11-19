@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Results;
+﻿using Core.RequestFeatures;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.Dtos;
 using Entities.RequestFeatures;
@@ -11,8 +12,9 @@ using System.Threading.Tasks;
 namespace Business.Abstract
 {
     public interface IFootballerService
-    { 
-        Task<IDataResult<List<Footballer>>> GetAllAsync();
+    {
+        Task<(IEnumerable<Footballer> footballer, MetaData metaData)> GetAllPaginationFootballer(FootballerParameters parameters);
+        Task<IDataResult<List<Footballer>>> GetAllAsync(int minAge, int maxAge);
         Task<IDataResult<Footballer>> GetAsync(int id);
         Task<IResult> AddAsync(Footballer footballer);
         Task<IResult> UpdateAsync(Footballer footballer);

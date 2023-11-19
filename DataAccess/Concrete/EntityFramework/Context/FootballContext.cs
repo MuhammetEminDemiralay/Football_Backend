@@ -1,14 +1,17 @@
-﻿using Entities.Concrete;
+﻿using Entities.AuthenticationModel;
+using Entities.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.Context
 {
-    public class FootballContext : DbContext
+    public class FootballContext : IdentityDbContext<User>
     {
         public DbSet<CareerStat> CareerStats { get; set; }
         public DbSet<City> Citys { get; set; }
@@ -31,6 +34,12 @@ namespace DataAccess.Concrete.EntityFramework.Context
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Football;");
         }
 
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
 
     }
 }

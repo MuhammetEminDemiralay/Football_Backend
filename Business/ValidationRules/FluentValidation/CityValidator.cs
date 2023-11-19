@@ -12,6 +12,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public CityValidator()
         {
+            
         }
     }
 }

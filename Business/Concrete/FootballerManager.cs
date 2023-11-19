@@ -2,11 +2,15 @@
 using Business.Constant;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect;
+using Core.RequestFeatures;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.Dtos;
+using Entities.Exceptions.Concrete;
 using Entities.RequestFeatures;
+using NHibernate.Linq.Clauses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +46,9 @@ namespace Business.Concrete
             return new SuccessDataResult<Footballer>(await _footballerDal.GetAsync(p => p.Id == id), Messages.FootballerGet);
         }
 
-        public async Task<IDataResult<List<Footballer>>> GetAllAsync()
+        public async Task<IDataResult<List<Footballer>>> GetAllAsync(int minAge, int maxAge)
         {
-            return new SuccessDataResult<List<Footballer>>(await _footballerDal.GetAllAsync(), Messages.FootballerList);
+            return new SuccessDataResult<List<Footballer>>(await _footballerDal.GetAllAsync(p => p.Age > minAge && p.Age < maxAge), Messages.FootballerList);
         }
 
         public async Task<IDataResult<List<FootballerDetailDto>>> GetFootballerDetailByCountryIdAsync(int countryId, bool nationalTeam, int nationalTeamLevel)
@@ -71,6 +75,14 @@ namespace Business.Concrete
         {
             await _footballerDal.UpdateAsync(footballer);
             return new SuccessResult(Messages.FootballerUpdate);
+        }
+
+        public async Task<(IEnumerable<Footballer> footballer, MetaData metaData)> GetAllPaginationFootballer(FootballerParameters parameters)
+        {
+            if (!parameters.ValidPriceRange)
+                throw new PriceOutOfRangeBadRequestException();
+            var result = await _footballerDal.GetAllTryFootballer(parameters);
+            return (result, result.MetaData);
         }
     }
 }

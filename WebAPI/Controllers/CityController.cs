@@ -108,5 +108,14 @@ namespace WebAPI.Controllers
 
             return BadRequest();
         }
+
+        [HttpOptions]
+        public IActionResult GetOptions()
+        {
+            Response.Headers.Add("Allow", "GET, POST, OPTIONS, HEAD");
+            return Ok();
+        }
+
+        
     }
 }
