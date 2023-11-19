@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Entities.AuthenticationModel;
 using Entities.Dtos;
 
 namespace WebAPI.Utilities
@@ -8,7 +7,7 @@ namespace WebAPI.Utilities
     {
         public MappingProfile()
         {
-            CreateMap<UserForRegistrationDto, User>();
+            
         }
     }
 }

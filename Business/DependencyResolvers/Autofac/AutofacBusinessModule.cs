@@ -5,6 +5,7 @@ using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
+using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,11 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<FootManager>().As<IFootService>().SingleInstance();
             builder.RegisterType<EFFootDal>().As<IFootDal>().SingleInstance();
+
+            builder.RegisterType<EFUserDal>().As<IUserDal>().SingleInstance();
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+
+            builder.RegisterType<AuthenticationManager>().As<IAuthenticationService>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

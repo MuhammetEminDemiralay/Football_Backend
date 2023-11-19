@@ -1,6 +1,5 @@
-﻿using Entities.AuthenticationModel;
+﻿using Core.Entities.Concrete;
 using Entities.Concrete;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.Context
 {
-    public class FootballContext : IdentityDbContext<User>
+    public class FootballContext : DbContext
     {
         public DbSet<CareerStat> CareerStats { get; set; }
         public DbSet<City> Citys { get; set; }
@@ -28,17 +27,13 @@ namespace DataAccess.Concrete.EntityFramework.Context
         public DbSet<ClubImage> ClubImages { get; set; }
         public DbSet<FootballerImage> FootballerImages{ get; set; }
         public DbSet<Foot> Foots { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Football;");
-        }
-
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
     }
