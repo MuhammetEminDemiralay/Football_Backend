@@ -12,6 +12,7 @@ namespace Business.Abstract
     public interface IAuthenticationService
     {
         Task<IResult> UserExist(string email);
-        IDataResult<User> Register(UserForRegisterDto userForRegisterDto); 
+        Task<IDataResult<User>> Register(UserForRegisterDto userForRegisterDto);
+        Task<IDataResult<User>> Login(UserForLoginDto userForLoginDto);
     }
 }

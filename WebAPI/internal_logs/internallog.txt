@@ -246,3 +246,31 @@
 2023-11-19 23:20:35.1761 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
 2023-11-19 23:20:35.1992 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
 2023-11-19 23:20:35.2150 Info Configuration initialized.
+2023-11-21 21:58:39.7785 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 21:58:39.8777 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 21:58:39.8971 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 21:58:39.9163 Info Configuration initialized.
+2023-11-21 22:13:45.6559 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 22:13:45.6919 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 22:13:45.7089 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 22:13:45.7278 Info Configuration initialized.
+2023-11-21 22:16:01.0796 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 22:16:01.1143 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 22:16:01.1332 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 22:16:01.1503 Info Configuration initialized.
+2023-11-21 22:17:21.0547 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 22:17:21.0937 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 22:17:21.1178 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 22:17:21.1452 Info Configuration initialized.
+2023-11-21 22:20:23.7602 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 22:20:23.8012 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 22:20:23.8317 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 22:20:23.8544 Info Configuration initialized.
+2023-11-21 22:49:13.5755 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 22:49:13.6128 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 22:49:13.6327 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 22:49:13.6513 Info Configuration initialized.
+2023-11-21 22:51:19.5106 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-11-21 22:51:19.5431 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2023-11-21 22:51:19.5652 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2023-11-21 22:51:19.5802 Info Configuration initialized.

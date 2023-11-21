@@ -19,23 +19,35 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
 
-            //var userToCheck = await _authService.UserExist(userForRegisterDto.Email);
+            var userToCheck = await _authService.UserExist(userForRegisterDto.Email);
+            if (!userToCheck.Success)
+            {
+                return BadRequest();
+            }
 
-
-            var registerResult = _authService.Register(userForRegisterDto);
+            var registerResult = await _authService.Register(userForRegisterDto);
 
             if(registerResult != null)
             {
-                return Ok(registerResult.Data);
+                return Ok(registerResult);
             }
 
             return BadRequest();
-            // Kullanıcı varmı(email control)
-            // Kullanıcı varsa şifeyi haşle, kullanıcı oluştur, kullanıcı ekle, geri döndür.
-            // kaydedilen kullanıcıyı token oluşturmak için geri döndür. Token Oluştur.
+
 
 
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        {
+            var loginResult = await _authService.Login(userForLoginDto);
+            if (!loginResult.Success)
+            {
+                return BadRequest();
+            }
+
+            return Ok(loginResult.Success);
+        }
     }
 }

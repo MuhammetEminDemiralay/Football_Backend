@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,5 +77,8 @@ namespace Business.Constant
         public static string AlreadyLeagueName = "League name already exist";
 
         public static string RegisterSuccess = "Register Success";
+        public static string EmailError = "Email not found";
+        public static string PasswordError = "Password error";
+        public static string LoginSuccess = "Login Success";
     }
 }

@@ -20,7 +20,23 @@ namespace Business.Concrete
             _userService = userService;
         }
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IDataResult<User>> Login(UserForLoginDto userForLoginDto)
+        {
+            var userToCheck = await _userService.GetByEmailAsync(userForLoginDto.Email);
+            if(userToCheck == null)
+            {
+                return new ErrorDataResult<User>(Messages.EmailError);
+            }
+
+            if(!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            {
+                return new ErrorDataResult<User>(Messages.PasswordError);
+            }
+
+            return new SuccessDataResult<User>(Messages.LoginSuccess);
+        }
+
+        public async Task<IDataResult<User>> Register(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
@@ -34,7 +50,7 @@ namespace Business.Concrete
                 Status = true
             };
 
-            _userService.AddAsync(user);
+            await _userService.AddAsync(user);
             return new SuccessDataResult<User>(user, Messages.RegisterSuccess);
 
         }
