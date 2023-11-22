@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Core.Utilities.Security.JWT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,6 +80,7 @@ namespace Business.Constant
         public static string RegisterSuccess = "Register Success";
         public static string EmailError = "Email not found";
         public static string PasswordError = "Password error";
-        public static string LoginSuccess = "Login Success";
+        public static string LoginSuccess = "Login success";
+        public static string TokenCreated = "Token created";
     }
 }

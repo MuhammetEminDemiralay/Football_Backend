@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Results;
+using Core.Utilities.Security.JWT;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,6 @@ namespace Business.Abstract
         Task<IResult> UserExist(string email);
         Task<IDataResult<User>> Register(UserForRegisterDto userForRegisterDto);
         Task<IDataResult<User>> Login(UserForLoginDto userForLoginDto);
+        Task<IDataResult<AccessToken>> CreateToken(User user);
     }
 }

@@ -7,6 +7,7 @@ namespace Business.Abstract
     {
         Task<IDataResult<List<User>>> GetAllAsync();
         Task<IDataResult<User>> GetAsync(int id);
+        Task<List<OperationClaim>> GetClaims(User user);
         Task<User> GetByEmailAsync(string email);
         Task<IResult> AddAsync(User user);
         Task<IResult> DeleteAsync(User user);

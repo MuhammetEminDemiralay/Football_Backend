@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constant;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -42,6 +43,12 @@ namespace Business.Concrete
         public async Task<User> GetByEmailAsync(string email)
         {
             return await _userDal.GetAsync(u => u.Email == email);
+        }
+
+        public async Task<List<OperationClaim>> GetClaims(User user)
+        {
+            await _userDal.GetClaims(user);
+            return new List<OperationClaim>();
         }
 
         public async Task<IResult> UpdateAsync(User user)

@@ -3,6 +3,7 @@ using Business.Constant;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
+using Core.Utilities.Security.JWT;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,17 @@ namespace Business.Concrete
     public class AuthenticationManager : IAuthenticationService
     {
         IUserService _userService;
+        ITokenHelper _tokenHelper;
         public AuthenticationManager(IUserService userService)
         {
             _userService = userService;
+        }
+
+        public async Task<IDataResult<AccessToken>> CreateToken(User user)
+        {
+            var claims = await _userService.GetClaims(user);
+            var accessToken = _tokenHelper.CreateToken(user, claims);
+            return new SuccessDataResult<AccessToken>(Messages.TokenCreated);
         }
 
         public async Task<IDataResult<User>> Login(UserForLoginDto userForLoginDto)

@@ -26,15 +26,12 @@ namespace WebAPI.Controllers
             }
 
             var registerResult = await _authService.Register(userForRegisterDto);
-
-            if(registerResult != null)
+            var token = await _authService.CreateToken(registerResult.Data);
+            if (token.Success)
             {
-                return Ok(registerResult);
+                return Ok(token);
             }
-
             return BadRequest();
-
-
 
         }
 
@@ -47,7 +44,12 @@ namespace WebAPI.Controllers
                 return BadRequest();
             }
 
-            return Ok(loginResult.Success);
+            var token = await _authService.CreateToken(loginResult.Data);
+            if (token.Success)
+            {
+                return Ok(token);
+            }
+            return Ok(loginResult.Message);
         }
     }
 }
