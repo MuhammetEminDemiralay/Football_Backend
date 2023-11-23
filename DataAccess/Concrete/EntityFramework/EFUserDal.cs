@@ -14,11 +14,11 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public async Task<List<OperationClaim>> GetClaims(User user)
         {
-            using(FootballContext context = new())
+            using(FootballContext context = new FootballContext())
             {
-                var result =  from operationClaim in context.OperationClaims
+                var result = from operationClaim in context.OperationClaims
                              join userOperationClaim in context.UserOperationClaims
-                             on operationClaim.Id equals userOperationClaim.UserOpearationClaimId
+                             on operationClaim.Id equals userOperationClaim.OperationClaimId
                              where userOperationClaim.UserId == user.Id
                              select new OperationClaim
                              {
@@ -26,6 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Name = operationClaim.Name
                              };
                 return result.ToList();
+
             }
         }
     }

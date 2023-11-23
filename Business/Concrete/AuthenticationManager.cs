@@ -17,16 +17,17 @@ namespace Business.Concrete
     {
         IUserService _userService;
         ITokenHelper _tokenHelper;
-        public AuthenticationManager(IUserService userService)
+        public AuthenticationManager(IUserService userService, ITokenHelper tokenHelper)
         {
             _userService = userService;
+            _tokenHelper = tokenHelper;
         }
 
         public async Task<IDataResult<AccessToken>> CreateToken(User user)
         {
             var claims = await _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
-            return new SuccessDataResult<AccessToken>(Messages.TokenCreated);
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.TokenCreated);
         }
 
         public async Task<IDataResult<User>> Login(UserForLoginDto userForLoginDto)
@@ -42,7 +43,7 @@ namespace Business.Concrete
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }
 
-            return new SuccessDataResult<User>(Messages.LoginSuccess);
+            return new SuccessDataResult<User>(userToCheck, Messages.LoginSuccess);
         }
 
         public async Task<IDataResult<User>> Register(UserForRegisterDto userForRegisterDto)

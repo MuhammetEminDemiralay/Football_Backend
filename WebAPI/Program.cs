@@ -37,6 +37,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 ;
 
+builder.Services.ConfigureJwt(builder.Configuration);
+
 
 var app = builder.Build();
 
