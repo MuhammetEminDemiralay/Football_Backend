@@ -17,13 +17,12 @@ namespace DataAccess.Concrete.EntityFramework
     {
 
 
-        public async Task<List<LeagueDetailDto>> GetLeagueDetailDtosAsync(Expression<Func<LeagueDetailDto, bool>> filter = null)
+        public async Task<List<LeagueDetailDto>> GetLeagueDetailByCountryId(Expression<Func<LeagueDetailDto, bool>> filter = null)
         {
             using(var context = new FootballContext())
             {
                 var result = from league in context.Leagues
-                             join leagueImage in context.LeagueImages
-                             on league.Id equals leagueImage.LeagueId
+
 
 
 
@@ -31,7 +30,6 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  Id = league.Id,
                                  CountryId = league.CountryId,
-                                 Date = leagueImage.Date,
                                  LeagueImagePath = (from image in context.LeagueImages where image.LeagueId == league.Id select image.LeagueImagePath).FirstOrDefault(),
                                  LeagueLevel = league.LeagueLevel,
                                  LeagueName = league.LeagueName,
@@ -39,6 +37,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Players = league.Players,
                                  ReigningChampion = league.ReigningChampion,
                                  TotalMarketValue = league.TotalMarketValue,
+
                              };
 
                 return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
@@ -50,10 +49,6 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new FootballContext())
             {
                 var result = from league in context.Leagues
-                             join leagueImage in context.LeagueImages
-                             on league.Id equals leagueImage.LeagueId
-                             join countryImage in context.CountryImages
-                             on league.CountryId equals countryImage.CountryId
                              join country in context.Countrys
                              on league.CountryId equals country.Id
 
@@ -61,9 +56,8 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  Id = league.Id,
                                  CountryId = league.CountryId,
-                                 Date = leagueImage.Date,
-                                 LeagueImagePath = leagueImage.LeagueImagePath,
-                                 CountryImagePath = countryImage.CountryImagePath,
+                                 LeagueImagePath = (from image in context.LeagueImages where image.LeagueId == league.Id select image.LeagueImagePath).FirstOrDefault(),
+                                 CountryImagePath = (from image in context.CountryImages where image.CountryId== country.Id select image.CountryImagePath).FirstOrDefault(),
                                  LeagueLevel = league.LeagueLevel,
                                  LeagueName = league.LeagueName,
                                  NumberOfTeams = league.NumberOfTeams,

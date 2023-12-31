@@ -11,7 +11,7 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public int FootballerId { get; set; }
-        public string FootballerImagePath { get; set; }
+        public string? FootballerImagePath { get; set; }
         public DateTime Date { get; set; }
     }
 }

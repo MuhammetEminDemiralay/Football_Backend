@@ -53,7 +53,7 @@ namespace Business.Concrete
 
         public async Task<IDataResult<List<LeagueDetailDto>>> GetLeaguesbyCountryIdAsync(int countryId)
         {
-            return new SuccessDataResult<List<LeagueDetailDto>>(await _leagueDal.GetLeagueDetailDtosAsync(p => p.CountryId == countryId), Messages.GetByCountryId);
+            return new SuccessDataResult<List<LeagueDetailDto>>(await _leagueDal.GetLeagueDetailByCountryId(p => p.CountryId == countryId), Messages.GetByCountryId);
         }
 
         public async Task<IResult> UpdateAsync(League league)

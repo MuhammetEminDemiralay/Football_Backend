@@ -17,5 +17,7 @@ namespace Business.Abstract
         Task<IResult> AddCollectiveAsync(IFormFile[] files, LeagueImage leagueImage);
         Task<IResult> UpdateAsync(IFormFile file, LeagueImage leagueImage);
         Task<IResult> DeleteAsync(LeagueImage leagueImage);
+
+        Task<IDataResult<LeagueImage>> GetImageByImageId(int imageId);
     }
 }

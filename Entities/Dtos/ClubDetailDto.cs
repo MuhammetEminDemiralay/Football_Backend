@@ -12,10 +12,10 @@ namespace Entities.Dtos
         public int Id { get; set; }
         public int LeagueId { get; set; }
         public int CountryId { get; set; }
-        public string ClubImagePath { get; set; }
-        public string LeagueImagePath { get; set; }
-        public string CountryImagePath { get; set; }
-        public DateTime Date { get; set; }
+        public string? ClubImagePath { get; set; }
+        public string? LeagueImagePath { get; set; }
+        public string? CountryImagePath { get; set; }
+        public DateTime? Date { get; set; }
         public string ClubName { get; set; }
         public int SquadSize { get; set; }
         public int AverageAge { get; set; }

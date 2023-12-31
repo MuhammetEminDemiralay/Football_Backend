@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getLeagueImagesByLeagueId")]
-        public async Task<IActionResult> GetImageByCountryIdAsync(int leagueId)
+        public async Task<IActionResult> GetLeagueImageByLeagueIdAsync(int leagueId)
         {
             var result = await _leagueImageService.GetLeagueImageByLeagueIdAsync(leagueId);
             if (result.Success)
@@ -61,6 +61,18 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
+            return BadRequest();
+        }
+
+
+        [HttpPost("update")]
+        public async Task<IActionResult> Update(IFormFile file, [FromForm] LeagueImage leagueImage)
+        {
+            var result = await _leagueImageService.UpdateAsync(file, leagueImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
             return BadRequest();
         }
 

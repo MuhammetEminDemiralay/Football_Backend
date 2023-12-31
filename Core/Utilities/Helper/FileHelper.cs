@@ -47,8 +47,6 @@ namespace Core.Utilities.Helper
         {
             Delete(oldImagePath);
             return Add(file);
-
-
         }
 
 

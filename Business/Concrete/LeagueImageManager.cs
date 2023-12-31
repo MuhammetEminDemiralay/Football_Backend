@@ -51,6 +51,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<LeagueImage>>(await _leagueImageDal.GetAllAsync(), "League image listed");
         }
 
+        public async Task<IDataResult<LeagueImage>> GetImageByImageId(int imageId)
+        {
+            return new SuccessDataResult<LeagueImage>(await _leagueImageDal.GetAsync(p => p.Id == imageId));
+        }
+
         public async Task<IDataResult<LeagueImage>> GetLeagueImageByLeagueIdAsync(int leagueId)
         {
             return new SuccessDataResult<LeagueImage>(await _leagueImageDal.GetAsync(p => p.Id == leagueId), "Lig ıd'ye göre lig logosu getirildi");
@@ -58,7 +63,12 @@ namespace Business.Concrete
 
         public async Task<IResult> UpdateAsync(IFormFile file, LeagueImage leagueImage)
         {
-            throw new NotImplementedException();
+            LeagueImage oldLeagueImage = GetImageByImageId(leagueImage.Id).Result.Data;
+            leagueImage.LeagueImagePath = FileHelper.Update(file, oldLeagueImage.LeagueImagePath);
+            leagueImage.Date = DateTime.Now;
+            leagueImage.LeagueId = oldLeagueImage.LeagueId;
+            _leagueImageDal.UpdateAsync(leagueImage);
+            return new SuccessResult("league image updated");
         }
     }
 }

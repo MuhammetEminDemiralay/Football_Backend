@@ -12,7 +12,7 @@ namespace DataAccess.Abstract
 {
     public interface ILeagueDal : IEntityRepository<League>
     {
-        Task<List<LeagueDetailDto>> GetLeagueDetailDtosAsync(Expression<Func<LeagueDetailDto, bool>> filter = null);
+        Task<List<LeagueDetailDto>> GetLeagueDetailByCountryId(Expression<Func<LeagueDetailDto, bool>> filter = null);
         Task<LeagueDetailDto> GetLeagueDetailByLeagueIdAsync(Expression<Func<LeagueDetailDto, bool>> filter);
     }
 }
