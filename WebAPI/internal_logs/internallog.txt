@@ -611,3 +611,103 @@
 2023-12-31 23:02:06.2807 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
 2023-12-31 23:02:06.3117 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
 2023-12-31 23:02:06.3415 Info Configuration initialized.
+2024-01-01 16:08:53.3595 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 16:08:53.4879 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 16:08:53.5048 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 16:08:53.5048 Info Configuration initialized.
+2024-01-01 16:17:26.8664 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 16:17:26.8843 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 16:17:26.9024 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 16:17:26.9160 Info Configuration initialized.
+2024-01-01 16:22:37.2143 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 16:22:37.2422 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 16:22:37.2720 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 16:22:37.3090 Info Configuration initialized.
+2024-01-01 16:43:12.8211 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 16:43:12.9406 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 16:43:12.9578 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 16:43:12.9734 Info Configuration initialized.
+2024-01-01 16:56:39.2621 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 16:56:39.4099 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 16:56:39.4294 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 16:56:39.4484 Info Configuration initialized.
+2024-01-01 16:57:40.2497 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 16:57:40.2851 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 16:57:40.3037 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 16:57:40.3215 Info Configuration initialized.
+2024-01-01 17:22:45.5732 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 17:22:45.6110 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 17:22:45.6273 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 17:22:45.6426 Info Configuration initialized.
+2024-01-01 17:28:53.4360 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 17:28:53.4776 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 17:28:53.4974 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 17:28:53.4974 Info Configuration initialized.
+2024-01-01 17:35:27.2285 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 17:35:27.2485 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 17:35:27.2616 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 17:35:27.2616 Info Configuration initialized.
+2024-01-01 18:32:45.9892 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 18:32:46.0443 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 18:32:46.0842 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 18:32:46.1071 Info Configuration initialized.
+2024-01-01 18:42:52.5520 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 18:42:52.5870 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 18:42:52.6091 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 18:42:52.6311 Info Configuration initialized.
+2024-01-01 18:53:49.2261 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 18:53:49.2579 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 18:53:49.2579 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 18:53:49.2910 Info Configuration initialized.
+2024-01-01 18:54:37.9433 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 18:54:37.9603 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 18:54:37.9769 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 18:54:37.9915 Info Configuration initialized.
+2024-01-01 18:57:33.0683 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 18:57:33.1014 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 18:57:33.1172 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 18:57:33.1344 Info Configuration initialized.
+2024-01-01 19:03:52.9311 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 19:03:52.9540 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 19:03:52.9767 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 19:03:52.9993 Info Configuration initialized.
+2024-01-01 19:06:31.7442 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 19:06:31.7442 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 19:06:31.7775 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 19:06:31.7775 Info Configuration initialized.
+2024-01-01 20:13:30.4777 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 20:13:30.5185 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 20:13:30.5428 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 20:13:30.5629 Info Configuration initialized.
+2024-01-01 20:22:53.3344 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 20:22:53.3543 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 20:22:53.3673 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 20:22:53.3673 Info Configuration initialized.
+2024-01-01 20:29:24.3763 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 20:29:24.3949 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 20:29:24.4113 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 20:29:24.4246 Info Configuration initialized.
+2024-01-01 20:54:59.2739 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 20:54:59.3132 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 20:54:59.3317 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 20:54:59.3545 Info Configuration initialized.
+2024-01-01 21:40:37.6424 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 21:40:37.6779 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 21:40:37.6939 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 21:40:37.7087 Info Configuration initialized.
+2024-01-01 23:07:17.3882 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 23:07:17.4313 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 23:07:17.4498 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 23:07:17.4655 Info Configuration initialized.
+2024-01-01 23:17:05.1065 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 23:17:05.1488 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 23:17:05.1661 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 23:17:05.1817 Info Configuration initialized.
+2024-01-01 23:20:12.2637 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 23:20:12.2797 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 23:20:12.2940 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 23:20:12.3073 Info Configuration initialized.
+2024-01-01 23:34:49.0840 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-01-01 23:34:49.1179 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.4.2092. Product version: 5.2.4+5ed75b125a691ce9f01e64641f1a79f438385847. GlobalAssemblyCache: False
+2024-01-01 23:34:49.1342 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\pepmu\source\repos\FootballBackend\WebAPI\nlog.config
+2024-01-01 23:34:49.1489 Info Configuration initialized.

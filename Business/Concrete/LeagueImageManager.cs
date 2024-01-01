@@ -58,7 +58,7 @@ namespace Business.Concrete
 
         public async Task<IDataResult<LeagueImage>> GetLeagueImageByLeagueIdAsync(int leagueId)
         {
-            return new SuccessDataResult<LeagueImage>(await _leagueImageDal.GetAsync(p => p.Id == leagueId), "Lig ıd'ye göre lig logosu getirildi");
+            return new SuccessDataResult<LeagueImage>(await _leagueImageDal.GetAsync(p => p.LeagueId == leagueId), "Lig ıd'ye göre lig logosu getirildi");
         }
 
         public async Task<IResult> UpdateAsync(IFormFile file, LeagueImage leagueImage)

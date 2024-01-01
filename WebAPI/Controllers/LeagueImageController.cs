@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
             var result = await _leagueImageService.AddCollectiveAsync(files, leagueImage);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result.Success);
             }
 
             return BadRequest(result);

@@ -64,5 +64,16 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
+        [HttpPost("update")]
+        public async Task<IActionResult> Update(IFormFile file, [FromForm] ClubImage clubImage)
+        {
+            var result = await _clubImageService.UpdateAsync(file, clubImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
     }
 }

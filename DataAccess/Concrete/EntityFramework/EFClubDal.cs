@@ -21,21 +21,17 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new FootballContext())
             {
                 var result = from club in context.Clubs
-                             join clubImage in context.ClubImages
-                             on club.Id equals clubImage.ClubId
-
 
                              select new ClubDetailDto
                              {
                                  Id = club.Id,
                                  LeagueId = club.LeagueId,
                                  CountryId = club.CountryId,
-                                 ClubImagePath = clubImage.ClubImagePath,
+                                 ClubImagePath = (from image in context.ClubImages where image.ClubId == club.Id select image.ClubImagePath).FirstOrDefault(),
                                  ClubMarketValue = club.ClubMarketValue,
                                  AverageAge = club.AverageAge,
                                  ClubName = club.ClubName,
                                  CurrentTransferRecord = club.CurrentTransferRecord,
-                                 Date = clubImage.Date,
                                  Foreigners = (from footballers in context.Footballers where footballers.CountryId == club.CountryId select footballers.Name).Count(),
                                  NationalTeamPlayers = (from footballers in context.Footballers where footballers.ClubId == club.Id && footballers.NationalTeamPlayerActive == true select footballers.Name).Count(),
                                  SquadSize = club.SquadSize,
@@ -52,12 +48,6 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new FootballContext())
             {
                 var result = from club in context.Clubs
-                             join clubImage in context.ClubImages
-                             on club.Id equals clubImage.ClubId
-                             join leagueImage in context.LeagueImages
-                             on club.LeagueId equals leagueImage.LeagueId
-                             join countryImage in context.CountryImages
-                             on club.CountryId equals countryImage.CountryId
                              join league in context.Leagues
                              on club.LeagueId equals league.Id
 
@@ -67,14 +57,13 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = club.Id,
                                  LeagueId = club.LeagueId,
                                  CountryId = club.CountryId,
-                                 ClubImagePath = clubImage.ClubImagePath,
-                                 LeagueImagePath = leagueImage.LeagueImagePath,
-                                 CountryImagePath = countryImage.CountryImagePath,
+                                 ClubImagePath = (from image in context.ClubImages where image.ClubId == club.Id select image.ClubImagePath).FirstOrDefault(),
+                                 LeagueImagePath = (from image in context.LeagueImages where image.LeagueId == club.LeagueId select image.LeagueImagePath).FirstOrDefault(),
+                                 CountryImagePath = (from image in context.CountryImages where image.CountryId == club.CountryId select image.CountryImagePath).FirstOrDefault(),
                                  ClubMarketValue = club.ClubMarketValue,
                                  AverageAge = club.AverageAge,
                                  ClubName = club.ClubName,
                                  CurrentTransferRecord = club.CurrentTransferRecord,
-                                 Date = clubImage.Date,
                                  Foreigners = (from footballers in context.Footballers where footballers.ClubId == club.Id && footballers.CountryId != club.CountryId select footballers.Name).Count(),
                                  NationalTeamPlayers = (from footballers in context.Footballers where footballers.ClubId == club.Id && footballers.NationalTeamPlayerActive == true select footballers.Name).Count(),
                                  SquadSize = club.SquadSize,

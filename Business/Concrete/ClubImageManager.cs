@@ -56,9 +56,19 @@ namespace Business.Concrete
             return new SuccessDataResult<ClubImage>(await _clubImageDal.GetAsync(p => p.Id == clubId), "Club ımage by club ıd get");
         }
 
+        public async Task<IDataResult<ClubImage>> GetImageByImageId(int imageId)
+        {
+            return new SuccessDataResult<ClubImage>(await _clubImageDal.GetAsync(p => p.Id == imageId));
+        }
+
         public async Task<IResult> UpdateAsync(IFormFile file, ClubImage clubImage)
         {
-            throw new NotImplementedException();
+            ClubImage oldClubImage = GetImageByImageId(clubImage.Id).Result.Data;
+            clubImage.ClubImagePath= FileHelper.Update(file, oldClubImage.ClubImagePath);
+            clubImage.Date = DateTime.Now;
+            clubImage.ClubId= oldClubImage.ClubId;
+            _clubImageDal.UpdateAsync(clubImage);
+            return new SuccessResult("Club image updated");
         }
     }
 }

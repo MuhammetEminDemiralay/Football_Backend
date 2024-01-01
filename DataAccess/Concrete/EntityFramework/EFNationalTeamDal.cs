@@ -21,15 +21,13 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new FootballContext())
             {
                 var result = from nationalTeam in context.NationalTeams
-                             join countryImage in context.CountryImages
-                             on nationalTeam.CountryId equals countryImage.CountryId
+
                              select new NationalTeamDetailDto
                              {
                                  Id = nationalTeam.Id,
                                  CountryId = nationalTeam.CountryId,
-                                 NationalTeamImagePath = countryImage.CountryImagePath,
+                                 NationalTeamImagePath = (from image in context.CountryImages where image.CountryId == nationalTeam.CountryId select image.CountryImagePath).FirstOrDefault(),
                                  NationalTeamName = nationalTeam.NationalTeamName,
-                                 Date = countryImage.Date,
                                  NationalTeamLevel = nationalTeam.NationalTeamLevel,
                                  SquadSize = nationalTeam.SquadSize,
                                  AverageAge = nationalTeam.AverageAge,
@@ -46,16 +44,13 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new FootballContext())
             {
                 var result = from nationalTeam in context.NationalTeams
-                             join countryImage in context.CountryImages
-                             on nationalTeam.CountryId equals countryImage.CountryId
 
                              select new NationalTeamDetailDto
                              {
                                  Id = nationalTeam.Id,
                                  CountryId = nationalTeam.CountryId,
-                                 NationalTeamImagePath = countryImage.CountryImagePath,
+                                 NationalTeamImagePath = (from image in context.CountryImages where image.CountryId == nationalTeam.CountryId select image.CountryImagePath).FirstOrDefault(),
                                  NationalTeamName = nationalTeam.NationalTeamName,
-                                 Date = countryImage.Date,
                                  NationalTeamLevel = nationalTeam.NationalTeamLevel,
                                  SquadSize = nationalTeam.SquadSize,
                                  AverageAge = nationalTeam.AverageAge,

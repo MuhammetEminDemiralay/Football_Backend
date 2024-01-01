@@ -58,9 +58,19 @@ namespace Business.Concrete
 
         }
 
+        public async Task<IDataResult<FootballerImage>> GetImageByImageId(int imageId)
+        {
+            return new SuccessDataResult<FootballerImage>(await _footballerImageDal.GetAsync(p => p.Id == imageId));
+        }
+
         public async Task<IResult> UpdateAsync(IFormFile file, FootballerImage footballerImage)
         {
-            throw new NotImplementedException();
+            FootballerImage oldFootballerImage = GetImageByImageId(footballerImage.Id).Result.Data;
+            footballerImage.FootballerImagePath= FileHelper.Update(file, oldFootballerImage.FootballerImagePath);
+            footballerImage.Date = DateTime.Now;
+            footballerImage.FootballerId= oldFootballerImage.FootballerId;
+            _footballerImageDal.UpdateAsync(footballerImage);
+            return new SuccessResult("Footballer image updated");
         }
     }
 }

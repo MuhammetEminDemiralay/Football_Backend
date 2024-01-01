@@ -2,6 +2,7 @@
 using Core.Utilities.Helper;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -55,9 +56,19 @@ namespace Business.Concrete
             return new SuccessDataResult<CountryImage>(await _countryImageDal.GetAsync(p => p.CountryId == countryId));
         }
 
-        public async Task<IResult> UpdateAsync(IFormFile file, CountryImage carImage)
+        public async Task<IDataResult<CountryImage>> GetImageByImageId(int imageId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<CountryImage>(await _countryImageDal.GetAsync(p => p.Id == imageId));
+        }
+
+        public async Task<IResult> UpdateAsync(IFormFile file, CountryImage countryImage)
+        {
+            CountryImage oldCountryImage = GetImageByImageId(countryImage.Id).Result.Data;
+            countryImage.CountryImagePath= FileHelper.Update(file, oldCountryImage.CountryImagePath);
+            countryImage.Date = DateTime.Now;
+            countryImage.CountryId = oldCountryImage.CountryId;
+            _countryImageDal.UpdateAsync(countryImage);
+            return new SuccessResult("Country image updated");
         }
     }
 }

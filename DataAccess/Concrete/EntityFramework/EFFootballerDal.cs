@@ -28,15 +28,12 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from footballer in context.Footballers
                              join position in context.Positions
                              on footballer.PositionId equals position.Id
-                             join countryImage in context.CountryImages
-                             on footballer.CountryId equals countryImage.CountryId
                              join foot in context.Foots
                              on footballer.FootId equals foot.Id
                              join city in context.Citys
                              on footballer.CityId equals city.Id
                              join country in context.Countrys
                              on footballer.CountryId equals country.Id
-
 
                              select new FootballerDetailDto
                              {
@@ -45,6 +42,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  LeagueId = footballer.LeagueId,
                                  CountryId = footballer.CountryId,
                                  DateOfBirth = footballer.DateOfBirth,
+                                 FootballerCountryImagePath = (from img in context.CountryImages where img.CountryId == footballer.CountryId select img.CountryImagePath).FirstOrDefault(),
+                                 FootballerClubImagePath = (from img in context.ClubImages where img.ClubId == footballer.ClubId select img.ClubImagePath).FirstOrDefault(),
                                  FootballerImagePath = (from img in context.FootballerImages where img.FootballerId == footballer.Id select img.FootballerImagePath).FirstOrDefault(),
                                  PlayerNumber = footballer.PlayerNumber,
                                  PositionName = position.PositionName,
@@ -52,7 +51,6 @@ namespace DataAccess.Concrete.EntityFramework
                                  Height = footballer.Height,
                                  Name = footballer.Name,
                                  FootballerValue = footballer.FootballerValue,
-                                 FootballerCountryImagePath = countryImage.CountryImagePath,
                                  FootName = foot.FootName,
                                  CityId = city.Id,
                                  FootId = foot.Id,
@@ -60,12 +58,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  FootballerCountryName = country.CountryName,
                                  NationalTeamPlayerActive = footballer.NationalTeamPlayerActive,
                                  NationalTeamLevel = footballer.NationalTeamLevel,
-                                 FootballerClubImagePath = (from img in context.ClubImages where img.ClubId == footballer.ClubId select img.ClubImagePath).FirstOrDefault()
                              };
 
-
                 return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
-
             }
         }
 
@@ -85,7 +80,6 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.CityId equals city.Id
                              join country in context.Countrys
                              on footballer.CountryId equals country.Id
-
 
                              select new FootballerDetailDto
                              {
@@ -110,9 +104,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  
                              };
 
-
                 return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
-
             }
         }
 
@@ -123,21 +115,15 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from footballer in context.Footballers
                              join position in context.Positions
                              on footballer.PositionId equals position.Id
-                             join countryImage in context.CountryImages
-                             on footballer.CountryId equals countryImage.CountryId
                              join foot in context.Foots
                              on footballer.FootId equals foot.Id
                              join country in context.Countrys
                              on footballer.CountryId equals country.Id
                              join city in context.Citys
                              on footballer.CityId equals city.Id
-                             join clubImage in context.ClubImages
-                             on footballer.ClubId equals clubImage.ClubId
                              join club in context.Clubs
                              on footballer.ClubId equals club.Id
                              
-
-
                              select new FootballerDetailDto
                              {
                                  Id = footballer.Id,
@@ -145,6 +131,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  LeagueId = footballer.LeagueId,
                                  CountryId = footballer.CountryId,
                                  DateOfBirth = footballer.DateOfBirth,
+                                 FootballerClubImagePath = (from img in context.ClubImages where img.ClubId == footballer.ClubId select img.ClubImagePath).FirstOrDefault(),
+                                 FootballerCountryImagePath = (from img in context.CountryImages where img.CountryId == footballer.CountryId select img.CountryImagePath).FirstOrDefault(),
                                  FootballerImagePath = (from img in context.FootballerImages where img.FootballerId == footballer.Id select img.FootballerImagePath).FirstOrDefault(),
                                  PlayerNumber = footballer.PlayerNumber,
                                  PositionName = position.PositionName,
@@ -153,18 +141,14 @@ namespace DataAccess.Concrete.EntityFramework
                                  Name = footballer.Name,
                                  FootballerValue = footballer.FootballerValue,
                                  FootName = foot.FootName,
-                                 FootballerCountryImagePath = countryImage.CountryImagePath,
                                  FootballerCountryName = country.CountryName,
                                  CityId = city.Id,
                                  FootId = foot.Id,
                                  PositionId = position.Id,
                                  CityName = city.CityName,
                                  ClubName = club.ClubName,
-                                 FootballerClubImagePath = clubImage.ClubImagePath,
                                  NationalTeamPlayerActive = footballer.NationalTeamPlayerActive,
                                  NationalTeamLevel = footballer.NationalTeamLevel
-                                 
-                                 
                              };
 
                 return await result.Where(filter).SingleOrDefaultAsync();

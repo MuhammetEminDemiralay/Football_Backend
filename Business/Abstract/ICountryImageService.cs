@@ -17,5 +17,6 @@ namespace Business.Abstract
         Task<IResult> AddCollectiveAsync(IFormFile[] files, CountryImage carImage);
         Task<IResult> UpdateAsync(IFormFile file, CountryImage carImage);
         Task<IResult> DeleteAsync(CountryImage carImage);
+        Task<IDataResult<CountryImage>> GetImageByImageId(int imageId);
     }
 }

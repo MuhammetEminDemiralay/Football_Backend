@@ -13,7 +13,6 @@ namespace Entities.Dtos
         public int CountryId { get; set; }
         public string? NationalTeamImagePath { get; set; }
         public string NationalTeamName { get; set; }
-        public DateTime? Date { get; set; }
         public int NationalTeamLevel { get; set; }
         public int SquadSize { get; set; }
         public int AverageAge { get; set; }

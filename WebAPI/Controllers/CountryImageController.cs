@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("getImageByCountryId")]
+        [HttpGet("getCountryImageByCountryId")]
         public async Task<IActionResult> GetImageByCountryIdAsync(int countryId)
         {
             var result = await _countryImageService.GetImageByCountryIdAsync(countryId);
@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
             var result = await _countryImageService.AddCollectiveAsync(files, countryImage);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
 
             return BadRequest(result);
@@ -61,6 +61,17 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
+            return BadRequest();
+        }
+
+        [HttpPost("update")]
+        public async Task<IActionResult> Update(IFormFile file, [FromForm] CountryImage countryImage)
+        {
+            var result = await _countryImageService.UpdateAsync(file, countryImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
             return BadRequest();
         }
 
