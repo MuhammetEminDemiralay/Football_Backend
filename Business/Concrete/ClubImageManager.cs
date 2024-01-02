@@ -53,7 +53,7 @@ namespace Business.Concrete
 
         public async Task<IDataResult<ClubImage>> GetImageByClubIdAsync(int clubId)
         {
-            return new SuccessDataResult<ClubImage>(await _clubImageDal.GetAsync(p => p.Id == clubId), "Club ımage by club ıd get");
+            return new SuccessDataResult<ClubImage>(await _clubImageDal.GetAsync(p => p.ClubId == clubId), "Club ımage by club ıd get");
         }
 
         public async Task<IDataResult<ClubImage>> GetImageByImageId(int imageId)

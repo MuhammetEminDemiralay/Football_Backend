@@ -24,12 +24,12 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-
+            
             return BadRequest();
         }
 
-        [HttpGet("getLeagueImagesByLeagueId")]
-        public async Task<IActionResult> GetImageByLeagueIdAsync(int clubId)
+        [HttpGet("getClubImageByClubId")]
+        public async Task<IActionResult> GetImageByClubIdAsync(int clubId)
         {
             var result = await _clubImageService.GetImageByClubIdAsync(clubId);
             if (result.Success)
