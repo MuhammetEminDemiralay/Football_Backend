@@ -52,20 +52,25 @@ namespace DataAccess.Concrete.EntityFramework
                              join country in context.Countrys
                              on league.CountryId equals country.Id
 
+
                              select new LeagueDetailDto
                              {
                                  Id = league.Id,
                                  CountryId = league.CountryId,
                                  LeagueImagePath = (from image in context.LeagueImages where image.LeagueId == league.Id select image.LeagueImagePath).FirstOrDefault(),
-                                 CountryImagePath = (from image in context.CountryImages where image.CountryId== country.Id select image.CountryImagePath).FirstOrDefault(),
+                                 CountryImagePath = (from image in context.CountryImages where image.CountryId == country.Id select image.CountryImagePath).FirstOrDefault(),
                                  LeagueLevel = league.LeagueLevel,
                                  LeagueName = league.LeagueName,
-                                 NumberOfTeams = league.NumberOfTeams,
-                                 Players = league.Players,
+                                 NumberOfTeams = (from clubs in context.Clubs where clubs.LeagueId == league.Id select league.LeagueName).Count(),
+                                 Players = (from footballers in context.Footballers where footballers.LeagueId == league.Id select footballers.Name).Count(),
                                  ReigningChampion = league.ReigningChampion,
                                  TotalMarketValue = league.TotalMarketValue,
-                                 CountryName = country.CountryName
+                                 CountryName = country.CountryName,
+                                 Foreigners = (from footballers in context.Footballers where footballers.LeagueId == league.Id && footballers.CountryId != league.CountryId select footballers.Name).Count(),
+                                 Age = (from footballers in context.Footballers where footballers.LeagueId == league.Id select footballers.Age).ToList(),
+                                 MostValuablePlayer = (from footballers in context.Footballers where footballers.LeagueId == league.Id  orderby  footballers.FootballerValue select new {Name = footballers.Name, FootballerValue = footballers.FootballerValue}).LastOrDefault()
                              };
+
 
                 return await result.Where(filter).SingleOrDefaultAsync();
 

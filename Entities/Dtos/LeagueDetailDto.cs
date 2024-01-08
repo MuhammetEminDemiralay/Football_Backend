@@ -21,5 +21,7 @@ namespace Entities.Dtos
         public int LeagueLevel { get; set; }
         public int ReigningChampion { get; set; }
         public int? Foreigners{ get; set; }
+        public List<int> Age { get; set; }
+        public Object MostValuablePlayer { get; set; }
     }
 }
