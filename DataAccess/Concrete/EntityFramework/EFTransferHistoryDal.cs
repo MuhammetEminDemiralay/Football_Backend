@@ -41,7 +41,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  ContractExpires = transferHistory.ContractExpires,
                                  Fee = transferHistory.Fee,
                                  MarketValue = footballer.FootballerValue,
-                                 Season = transferHistory.Season
+                                 Season = transferHistory.Season,
+                                 BeforeClubId = beforeClub.Id,
+                                 LastClubId = lastClub.Id
                             };
 
                 return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());

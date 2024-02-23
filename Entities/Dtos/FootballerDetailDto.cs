@@ -32,5 +32,11 @@ namespace Entities.Dtos
         public int? NationalTeamLevel { get; set; }
         public string? FootballerClubImagePath { get; set; }
         public string ClubName { get; set; }
+        public string? NameInHomeCountry { get; set; }
+        public string? PlaceOfBirth { get; set; }
+        public string? PlayerAgent { get; set; }
+        public DateTime? DateOfLastContract { get; set; }
+        public DateTime? Joined { get; set; }
+        public DateTime? ContractExpires { get; set; }
     }
 }

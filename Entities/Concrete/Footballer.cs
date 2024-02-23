@@ -26,7 +26,8 @@ namespace Entities.Concrete
         public int PlayerNumber { get; set; }
         public bool? NationalTeamPlayerActive { get; set; }
         public int? NationalTeamLevel { get; set; }
-
-
+        public string? NameInHomeCountry { get; set; }
+        public string? PlaceOfBirth { get; set; }
+        public string? PlayerAgent { get; set; }
     }
 }

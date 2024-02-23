@@ -17,9 +17,11 @@ namespace Entities.Dtos
         public string BeforeClubCountryImagePath { get; set; }
         public string BeforeClubImagePath { get; set; }
         public string BeforeClubName { get; set; }
+        public int BeforeClubId { get; set; }
         public string LastClubCountryImagePath { get; set; }
         public string LastClubImagePath { get; set; }
         public string LastClubName { get; set; }
+        public int LastClubId { get; set; }
 
     }
 }

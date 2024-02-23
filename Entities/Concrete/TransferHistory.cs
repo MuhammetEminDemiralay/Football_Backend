@@ -16,6 +16,7 @@ namespace Entities.Concrete
         public int LastClubId { get; set; }
         public DateTime Joined { get; set; }
         public DateTime ContractExpires { get; set; }
+        public DateTime? DateOfLastContract { get; set; }
         public int Fee { get; set; }
     }
 }

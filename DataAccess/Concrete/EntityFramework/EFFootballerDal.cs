@@ -34,6 +34,8 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.CityId equals city.Id
                              join country in context.Countrys
                              on footballer.CountryId equals country.Id
+                             join transferHistory in context.TransferHistorys
+                             on footballer.Id equals transferHistory.FootballerId
 
                              select new FootballerDetailDto
                              {
@@ -58,6 +60,12 @@ namespace DataAccess.Concrete.EntityFramework
                                  FootballerCountryName = country.CountryName,
                                  NationalTeamPlayerActive = footballer.NationalTeamPlayerActive,
                                  NationalTeamLevel = footballer.NationalTeamLevel,
+                                 NameInHomeCountry = footballer.NameInHomeCountry,
+                                 PlaceOfBirth = footballer.PlaceOfBirth,
+                                 PlayerAgent = footballer.PlayerAgent,
+                                 DateOfLastContract = transferHistory.DateOfLastContract,
+                                 Joined = transferHistory.Joined,
+                                 ContractExpires = transferHistory.ContractExpires
                              };
 
                 return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
@@ -67,7 +75,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public async Task<List<FootballerDetailDto>> GetFootballersDetailByClubIdAsync(Expression<Func<FootballerDetailDto, bool>> filter = null)
         {
-            using(var context = new FootballContext())
+            using (var context = new FootballContext())
             {
                 var result = from footballer in context.Footballers
                              join position in context.Positions
@@ -80,6 +88,8 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.CityId equals city.Id
                              join country in context.Countrys
                              on footballer.CountryId equals country.Id
+                             join transferHistory in context.TransferHistorys
+                             on footballer.Id equals transferHistory.FootballerId
 
                              select new FootballerDetailDto
                              {
@@ -96,12 +106,17 @@ namespace DataAccess.Concrete.EntityFramework
                                  Name = footballer.Name,
                                  FootballerValue = footballer.FootballerValue,
                                  FootballerCountryImagePath = countryImage.CountryImagePath,
-                                 FootName = foot.FootName,       
+                                 FootName = foot.FootName,
                                  CityId = city.Id,
                                  FootId = foot.Id,
                                  PositionId = position.Id,
-                                 FootballerCountryName = country.CountryName
-                                 
+                                 FootballerCountryName = country.CountryName,
+                                 NameInHomeCountry = footballer.NameInHomeCountry,
+                                 PlaceOfBirth = footballer.PlaceOfBirth,
+                                 PlayerAgent = footballer.PlayerAgent,
+                                 DateOfLastContract = transferHistory.DateOfLastContract,
+                                 Joined = transferHistory.Joined,
+                                 ContractExpires = transferHistory.ContractExpires
                              };
 
                 return await (filter == null ? result.ToListAsync() : result.Where(filter).ToListAsync());
@@ -123,7 +138,9 @@ namespace DataAccess.Concrete.EntityFramework
                              on footballer.CityId equals city.Id
                              join club in context.Clubs
                              on footballer.ClubId equals club.Id
-                             
+                             join transferHistory in context.TransferHistorys
+                             on footballer.Id equals transferHistory.FootballerId
+
                              select new FootballerDetailDto
                              {
                                  Id = footballer.Id,
@@ -148,7 +165,13 @@ namespace DataAccess.Concrete.EntityFramework
                                  CityName = city.CityName,
                                  ClubName = club.ClubName,
                                  NationalTeamPlayerActive = footballer.NationalTeamPlayerActive,
-                                 NationalTeamLevel = footballer.NationalTeamLevel
+                                 NationalTeamLevel = footballer.NationalTeamLevel,
+                                 NameInHomeCountry = footballer.NameInHomeCountry,
+                                 PlaceOfBirth = footballer.PlaceOfBirth,
+                                 PlayerAgent = footballer.PlayerAgent,
+                                 DateOfLastContract = transferHistory.DateOfLastContract,
+                                 Joined = transferHistory.Joined,
+                                 ContractExpires = transferHistory.ContractExpires
                              };
 
                 return await result.Where(filter).SingleOrDefaultAsync();
@@ -162,7 +185,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (var context = new FootballContext())
             {
-                var result = await(filter == null ? context.Set<Footballer>().Search(parameters.SearchTerm).ToListAsync() : context.Set<Footballer>().Where(filter).Search(parameters.SearchTerm).ToListAsync());
+                var result = await (filter == null ? context.Set<Footballer>().Search(parameters.SearchTerm).ToListAsync() : context.Set<Footballer>().Where(filter).Search(parameters.SearchTerm).ToListAsync());
 
                 return PagedList<Footballer>.ToPagedList(result, parameters.PageNumber, parameters.PageSize);
 
